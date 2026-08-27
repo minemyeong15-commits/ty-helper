@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>통영고등학교 도우미</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
 
     <style>
         body {
@@ -23,40 +26,32 @@
             max-height: 85vh;
             overflow-y: auto;
         }
-
-        .tag-button {
-            transition: all 0.15s ease;
-        }
-
-        .tag-button.active {
-            background-color: rgb(30 64 175);
-            color: white;
-            border-color: rgb(30 64 175);
-        }
     </style>
 </head>
 
-<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col">
+<body class="bg-slate-50 min-h-screen text-slate-800 flex flex-col justify-between">
 
-<!-- =========================================================
+<!-- ============================================================
      HEADER
-========================================================= -->
+============================================================ -->
+
 <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
 
-    <div class="max-w-6xl mx-auto px-4 py-3
-                flex flex-col lg:flex-row
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row
                 items-center justify-between gap-3">
 
         <div class="flex items-center space-x-3">
 
-            <div class="w-12 h-12 bg-white rounded-full
-                        flex items-center justify-center p-1
-                        shadow overflow-hidden">
+            <div class="w-12 h-12 bg-white rounded-full flex items-center
+                        justify-center p-1 shadow overflow-hidden">
 
-                <img src="logo.png"
-                     alt="학교 로고"
-                     class="w-full h-full object-contain"
-                     onerror="this.src='https://api.iconify.design/fluent-emoji-flat:school.svg'">
+                <img
+                    src="logo.png"
+                    alt="학교 로고"
+                    class="w-full h-full object-contain"
+                    onerror="this.src='https://api.iconify.design/fluent-emoji-flat:school.svg'"
+                >
+
             </div>
 
             <div>
@@ -71,336 +66,440 @@
 
         </div>
 
+
         <nav class="flex flex-wrap items-center justify-center
                     gap-1.5 text-sm font-medium">
 
-            <button onclick="switchTab('faq')"
-                    id="btn-faq"
-                    class="px-3 py-1.5 rounded-lg
-                           bg-blue-800 text-white shadow-sm">
+            <button
+                onclick="switchTab('faq')"
+                id="btn-faq"
+                class="px-3 py-1.5 rounded-lg bg-blue-800 text-white
+                       transition shadow-sm">
                 FAQ
             </button>
 
-            <button onclick="switchTab('qna')"
-                    id="btn-qna"
-                    class="px-3 py-1.5 rounded-lg hover:bg-blue-800">
-                선생님 질문
+            <button
+                onclick="switchTab('qna')"
+                id="btn-qna"
+                class="px-3 py-1.5 rounded-lg hover:bg-blue-800 transition">
+                질문 게시판
             </button>
 
-            <button onclick="switchTab('studentQna')"
-                    id="btn-studentQna"
-                    class="px-3 py-1.5 rounded-lg hover:bg-blue-800">
+            <button
+                onclick="switchTab('studentQna')"
+                id="btn-studentQna"
+                class="px-3 py-1.5 rounded-lg hover:bg-blue-800 transition">
                 학생 질문
             </button>
 
-            <button onclick="switchTab('lost')"
-                    id="btn-lost"
-                    class="px-3 py-1.5 rounded-lg hover:bg-blue-800">
+            <button
+                onclick="switchTab('lost')"
+                id="btn-lost"
+                class="px-3 py-1.5 rounded-lg hover:bg-blue-800 transition">
                 분실물
             </button>
 
-            <button onclick="switchTab('uniform')"
-                    id="btn-uniform"
-                    class="px-3 py-1.5 rounded-lg hover:bg-blue-800">
+            <button
+                onclick="switchTab('uniform')"
+                id="btn-uniform"
+                class="px-3 py-1.5 rounded-lg hover:bg-blue-800 transition">
                 교복실
             </button>
 
-            <button id="btn-admin-login"
-                    class="px-3 py-1.5 rounded-lg
-                           bg-amber-600 hover:bg-amber-500
-                           text-white text-xs font-bold
-                           ml-2 shadow-sm">
+            <button
+                id="btn-admin-login"
+                class="px-3 py-1.5 rounded-lg bg-amber-600
+                       hover:bg-amber-500 text-white transition
+                       text-xs font-bold ml-2 shadow-sm">
+
                 <i class="fa-solid fa-lock mr-1"></i>
                 관리자 로그인
+
             </button>
 
         </nav>
+
     </div>
+
 </header>
 
 
-<!-- =========================================================
+<!-- ============================================================
      MAIN
-========================================================= -->
-<main class="max-w-6xl w-full mx-auto px-4 py-6 flex-grow">
+============================================================ -->
+
+<main class="max-w-5xl w-full mx-auto px-4 py-6 flex-grow">
 
 
-<!-- =========================================================
+<!-- ============================================================
      1. FAQ
-========================================================= -->
+============================================================ -->
+
 <section id="tab-faq" class="space-y-6">
 
     <div class="bg-white p-6 rounded-2xl shadow-sm
                 border border-slate-100">
 
         <h2 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+
             <i class="fa-solid fa-lightbulb text-amber-500"></i>
+
             학교생활 핵심 정보 및 FAQ
+
         </h2>
+
 
         <div class="space-y-3">
 
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+
                 <h3 class="font-semibold text-blue-800 text-sm md:text-base">
                     Q. 교복 대여 및 구매는 어떻게 하나요?
                 </h3>
 
                 <p class="text-xs md:text-sm text-slate-600 mt-1">
-                    상단 '교복실'에서 원하는 교복을 선택하고
-                    자세히 보기에서 사이즈와 재고를 확인한 후 신청할 수 있습니다.
+                    상단 '교복실' 탭에서 원하는 교복을 선택한 뒤
+                    자세히 보기에서 사이즈와 재고를 확인하고 신청할 수 있습니다.
                 </p>
+
             </div>
 
+
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+
                 <h3 class="font-semibold text-blue-800 text-sm md:text-base">
                     Q. 분실물을 찾았거나 잃어버렸어요.
                 </h3>
 
                 <p class="text-xs md:text-sm text-slate-600 mt-1">
-                    '분실물' 탭에서 물품을 검색하거나 등록할 수 있습니다.
-                    각 분실물에는 댓글을 남길 수 있습니다.
+                    '분실물' 탭에서 물품을 검색하고 자세히 보기에서
+                    댓글을 이용할 수 있습니다.
                 </p>
+
             </div>
 
+
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+
                 <h3 class="font-semibold text-blue-800 text-sm md:text-base">
-                    Q. 선생님께 질문하고 싶어요.
+                    Q. 선생님께 질문하고 싶어요!
                 </h3>
 
                 <p class="text-xs md:text-sm text-slate-600 mt-1">
-                    '선생님 질문' 게시판을 이용해주세요.
+                    '질문 게시판'을 이용해 주세요.
                 </p>
+
             </div>
 
+
             <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+
                 <h3 class="font-semibold text-blue-800 text-sm md:text-base">
-                    Q. 학생끼리 질문하고 싶어요.
+                    Q. 학생끼리 질문하고 싶어요!
                 </h3>
 
                 <p class="text-xs md:text-sm text-slate-600 mt-1">
-                    '학생 질문' 게시판에서 질문을 올리고
-                    다른 학생들과 댓글로 소통할 수 있습니다.
+                    '학생 질문' 게시판에서 질문과 댓글을 작성할 수 있습니다.
                 </p>
+
             </div>
 
         </div>
+
     </div>
+
 </section>
 
 
-<!-- =========================================================
-     2. 학생 → 선생님 질문
-========================================================= -->
+<!-- ============================================================
+     2. 선생님 질문 게시판
+============================================================ -->
+
 <section id="tab-qna" class="hidden space-y-6">
 
     <div class="bg-white p-6 rounded-2xl shadow-sm
                 border border-slate-100">
 
         <h2 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-chalkboard-user text-blue-600"></i>
-            학생 → 선생님 질문 게시판
+
+            <i class="fa-solid fa-comments text-blue-600"></i>
+
+            학생-선생님 질문 게시판
+
         </h2>
 
-        <form id="qnaForm"
-              class="mb-4 space-y-2">
 
-            <input type="text"
-                   id="questionInput"
-                   maxlength="500"
-                   placeholder="선생님께 궁금한 점을 입력하세요..."
-                   required
-                   class="w-full px-4 py-2.5 border rounded-lg text-sm
-                          focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <form
+            id="qnaForm"
+            class="mb-4 space-y-2"
+        >
 
             <div class="flex flex-col sm:flex-row gap-2">
 
-                <input type="text"
-                       id="qnaHashtagInput"
-                       maxlength="200"
-                       placeholder="#수학 #학교생활 #시험 (선택)"
-                       class="flex-grow px-4 py-2.5 border rounded-lg text-sm
-                              focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input
+                    type="text"
+                    id="questionInput"
+                    maxlength="500"
+                    placeholder="선생님께 궁금한 점을 입력하세요..."
+                    required
+                    class="flex-grow px-4 py-2.5 border rounded-lg
+                           text-sm focus:outline-none
+                           focus:ring-2 focus:ring-blue-500"
+                >
 
-                <button type="submit"
-                        id="qnaSubmitBtn"
-                        class="bg-blue-900 text-white px-5 py-2.5
-                               rounded-lg text-sm font-bold
-                               hover:bg-blue-800 transition
-                               disabled:opacity-60">
+                <button
+                    type="submit"
+                    class="bg-blue-900 text-white px-5 py-2.5
+                           rounded-lg text-sm font-bold
+                           hover:bg-blue-800 transition"
+                >
                     질문하기
                 </button>
 
             </div>
+
+
+            <input
+                type="text"
+                id="qnaHashtags"
+                maxlength="200"
+                placeholder="해시태그 입력 예: #수업 #시험 #학교생활"
+                class="w-full px-4 py-2.5 border rounded-lg
+                       text-sm focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
+
         </form>
 
 
-        <input type="text"
-               id="qnaSearch"
-               placeholder="🔍 질문 내용 검색..."
-               class="w-full px-4 py-2 border rounded-lg text-sm
-                      bg-slate-50 focus:outline-none
-                      focus:ring-2 focus:ring-blue-500">
+        <div class="mb-3">
 
-        <div class="mt-3">
-            <div class="flex flex-wrap gap-2"
-                 id="qnaTags"></div>
+            <input
+                type="text"
+                id="qnaSearch"
+                placeholder="🔍 질문 내용 검색..."
+                class="w-full px-4 py-2 border rounded-lg
+                       text-sm bg-slate-50
+                       focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
+
         </div>
 
-        <div id="qnaList"
-             class="space-y-4 mt-5"></div>
+
+        <div
+            id="qnaHashtagList"
+            class="flex flex-wrap gap-2 mb-6"
+        ></div>
+
+
+        <div
+            id="qnaList"
+            class="space-y-4"
+        ></div>
 
     </div>
+
 </section>
 
 
-<!-- =========================================================
-     3. 학생 ↔ 학생 질문
-========================================================= -->
-<section id="tab-studentQna"
-         class="hidden space-y-6">
+<!-- ============================================================
+     3. 학생 질문 게시판
+============================================================ -->
+
+<section id="tab-studentQna" class="hidden space-y-6">
 
     <div class="bg-white p-6 rounded-2xl shadow-sm
                 border border-slate-100">
 
         <h2 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-users text-blue-600"></i>
-            학생 ↔ 학생 질문 게시판
+
+            <i class="fa-solid fa-user-group text-blue-600"></i>
+
+            학생 질문 게시판
+
         </h2>
 
-        <form id="studentQnaForm"
-              class="mb-4 space-y-2">
 
-            <input type="text"
-                   id="studentQuestionInput"
-                   maxlength="500"
-                   placeholder="학생들에게 궁금한 점을 질문해보세요..."
-                   required
-                   class="w-full px-4 py-2.5 border rounded-lg text-sm
-                          focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <form
+            id="studentQnaForm"
+            class="mb-4 space-y-2"
+        >
 
-            <div class="flex flex-col sm:flex-row gap-2">
+            <input
+                type="text"
+                id="studentQuestionInput"
+                maxlength="500"
+                placeholder="학생들에게 궁금한 것을 질문해보세요..."
+                required
+                class="w-full px-4 py-2.5 border rounded-lg
+                       text-sm focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
 
-                <input type="text"
-                       id="studentHashtagInput"
-                       maxlength="200"
-                       placeholder="#수학 #급식 #학교생활"
-                       class="flex-grow px-4 py-2.5 border rounded-lg text-sm
-                              focus:outline-none focus:ring-2 focus:ring-blue-500">
 
-                <button type="submit"
-                        id="studentQnaSubmitBtn"
-                        class="bg-blue-900 text-white px-5 py-2.5
-                               rounded-lg text-sm font-bold
-                               hover:bg-blue-800 transition
-                               disabled:opacity-60">
-                    질문하기
-                </button>
+            <input
+                type="text"
+                id="studentQnaHashtags"
+                maxlength="200"
+                placeholder="해시태그 입력 예: #동아리 #급식 #시험"
+                class="w-full px-4 py-2.5 border rounded-lg
+                       text-sm focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
 
-            </div>
 
-            <p class="text-[11px] text-slate-400">
-                해시태그는 예시처럼 입력해주세요:
-                <b>#수학 #급식 #동아리</b>
-            </p>
+            <button
+                type="submit"
+                class="w-full sm:w-auto bg-blue-900 text-white
+                       px-5 py-2.5 rounded-lg text-sm font-bold
+                       hover:bg-blue-800 transition"
+            >
+                질문 등록
+            </button>
 
         </form>
 
 
-        <input type="text"
-               id="studentQnaSearch"
-               placeholder="🔍 학생 질문 검색..."
-               class="w-full px-4 py-2 border rounded-lg text-sm
-                      bg-slate-50 focus:outline-none
-                      focus:ring-2 focus:ring-blue-500">
+        <div class="mb-3">
 
-        <div class="mt-3">
-            <div class="flex flex-wrap gap-2"
-                 id="studentQnaTags"></div>
+            <input
+                type="text"
+                id="studentQnaSearch"
+                placeholder="🔍 학생 질문 검색..."
+                class="w-full px-4 py-2 border rounded-lg
+                       text-sm bg-slate-50
+                       focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
+
         </div>
 
-        <div id="studentQnaList"
-             class="space-y-4 mt-5"></div>
+
+        <div
+            id="studentHashtagList"
+            class="flex flex-wrap gap-2 mb-6"
+        ></div>
+
+
+        <div
+            id="studentQnaList"
+            class="space-y-4"
+        ></div>
 
     </div>
+
 </section>
 
 
-<!-- =========================================================
+<!-- ============================================================
      4. 분실물
-========================================================= -->
-<section id="tab-lost"
-         class="hidden space-y-6">
+============================================================ -->
+
+<section id="tab-lost" class="hidden space-y-6">
 
     <div class="bg-white p-6 rounded-2xl shadow-sm
                 border border-slate-100">
 
         <h2 class="text-lg font-bold text-blue-900 mb-4 flex items-center gap-2">
+
             <i class="fa-solid fa-magnifying-glass text-blue-600"></i>
+
             분실물 센터
+
         </h2>
 
-        <form id="lostForm"
-              class="grid grid-cols-1 sm:grid-cols-2
-                     md:grid-cols-4 gap-3 mb-4
-                     bg-slate-50 p-4 rounded-xl
-                     border border-slate-200 items-center">
 
-            <input type="text"
-                   id="itemName"
-                   maxlength="60"
-                   placeholder="물품 이름"
-                   required
-                   class="px-3 py-2 border rounded-lg text-sm bg-white">
+        <form
+            id="lostForm"
+            class="grid grid-cols-1 sm:grid-cols-2
+                   md:grid-cols-4 gap-3 mb-4
+                   bg-slate-50 p-4 rounded-xl
+                   border border-slate-200 items-center"
+        >
 
-            <input type="text"
-                   id="itemLocation"
-                   maxlength="60"
-                   placeholder="분실/습득 장소"
-                   required
-                   class="px-3 py-2 border rounded-lg text-sm bg-white">
+            <input
+                type="text"
+                id="itemName"
+                maxlength="60"
+                placeholder="물품 이름"
+                required
+                class="px-3 py-2 border rounded-lg
+                       text-sm bg-white"
+            >
 
-            <input type="file"
-                   id="itemImage"
-                   accept="image/*"
-                   required
-                   class="text-xs text-slate-500
-                          file:mr-2 file:py-2 file:px-3
-                          file:rounded-lg file:border-0
-                          file:text-xs file:font-semibold
-                          file:bg-blue-50 file:text-blue-700">
 
-            <button type="submit"
-                    id="lostSubmitBtn"
-                    class="bg-blue-900 text-white py-2 rounded-lg
-                           font-medium text-sm hover:bg-blue-800
-                           transition disabled:opacity-60">
+            <input
+                type="text"
+                id="itemLocation"
+                maxlength="60"
+                placeholder="분실/습득 장소"
+                required
+                class="px-3 py-2 border rounded-lg
+                       text-sm bg-white"
+            >
+
+
+            <input
+                type="file"
+                id="itemImage"
+                accept="image/*"
+                required
+                class="text-xs text-slate-500
+                       file:mr-2 file:py-2
+                       file:px-3 file:rounded-lg
+                       file:border-0 file:text-xs
+                       file:font-semibold
+                       file:bg-blue-50
+                       file:text-blue-700"
+            >
+
+
+            <button
+                type="submit"
+                id="lostSubmitBtn"
+                class="bg-blue-900 text-white py-2
+                       rounded-lg font-medium text-sm
+                       hover:bg-blue-800 transition
+                       disabled:opacity-60"
+            >
                 등록하기
             </button>
 
         </form>
 
 
-        <input type="text"
-               id="lostSearch"
-               placeholder="🔍 물품 이름 또는 장소 검색..."
-               class="w-full px-4 py-2 border rounded-lg text-sm
-                      bg-slate-50 focus:outline-none
-                      focus:ring-2 focus:ring-blue-500">
+        <div class="mb-6">
+
+            <input
+                type="text"
+                id="lostSearch"
+                placeholder="🔍 물품 이름 또는 장소 검색..."
+                class="w-full px-4 py-2 border rounded-lg
+                       text-sm bg-slate-50
+                       focus:outline-none
+                       focus:ring-2 focus:ring-blue-500"
+            >
+
+        </div>
 
 
-        <div id="lostList"
-             class="grid grid-cols-1 sm:grid-cols-2
-                    md:grid-cols-3 gap-4 mt-5"></div>
+        <div
+            id="lostList"
+            class="grid grid-cols-1 sm:grid-cols-2
+                   md:grid-cols-3 gap-4"
+        ></div>
 
     </div>
+
 </section>
 
 
-<!-- =========================================================
+<!-- ============================================================
      5. 교복실
-========================================================= -->
-<section id="tab-uniform"
-         class="hidden space-y-6">
+============================================================ -->
+
+<section id="tab-uniform" class="hidden space-y-6">
 
     <div class="bg-white p-6 rounded-2xl shadow-sm
                 border border-slate-100
@@ -408,14 +507,20 @@
                 justify-between items-center gap-4">
 
         <h2 class="text-lg font-bold text-blue-900 flex items-center gap-2">
+
             <i class="fa-solid fa-shirt text-blue-600"></i>
+
             교복실 재고 현황
+
         </h2>
 
-        <button id="btnViewApplicants"
-                class="admin-only bg-blue-700 text-white
-                       text-xs px-3 py-2 rounded-lg
-                       hover:bg-blue-600 shadow-sm">
+
+        <button
+            id="btnViewApplicants"
+            class="admin-only bg-blue-700 text-white
+                   text-xs px-3 py-2 rounded-lg
+                   hover:bg-blue-600 transition shadow-sm"
+        >
             📋 신청자 명단 확인
         </button>
 
@@ -428,39 +533,52 @@
         <table class="w-full text-sm text-left">
 
             <thead>
+
                 <tr class="bg-slate-100 text-slate-700 border-b">
 
-                    <th class="p-3">구분</th>
-                    <th class="p-3">종류</th>
-                    <th class="p-3">가격</th>
-                    <th class="p-3">사이즈</th>
+                    <th class="p-3">
+                        구분
+                    </th>
 
-                    <th class="p-3 text-center admin-only">
-                        관리
+                    <th class="p-3">
+                        종류
+                    </th>
+
+                    <th class="p-3">
+                        가격
+                    </th>
+
+                    <th class="p-3">
+                        총 재고
                     </th>
 
                     <th class="p-3 text-center">
-                        신청
+                        자세히 보기
                     </th>
 
                 </tr>
+
             </thead>
 
-            <tbody id="uniformTable"
-                   class="divide-y divide-slate-100">
-            </tbody>
+
+            <tbody
+                id="uniformTable"
+                class="divide-y divide-slate-100"
+            ></tbody>
 
         </table>
 
     </div>
+
 </section>
 
 </main>
 
 
-<!-- =========================================================
+<!-- ============================================================
      FOOTER
-========================================================= -->
+============================================================ -->
+
 <footer class="bg-white border-t border-slate-200
                py-4 text-center text-xs text-slate-500">
 
@@ -470,88 +588,119 @@
 </footer>
 
 
-<!-- =========================================================
+<!-- ============================================================
      관리자 로그인 모달
-========================================================= -->
-<div id="adminModal"
-     class="hidden fixed inset-0 z-[100]
-            items-center justify-center
-            bg-slate-900/60 p-4">
+============================================================ -->
 
-    <div class="bg-white w-full max-w-sm
-                rounded-2xl shadow-xl p-6 space-y-4">
+<div
+    id="adminModal"
+    class="hidden fixed inset-0 z-[100]
+           items-center justify-center
+           bg-slate-900/60 p-4"
+>
+
+    <div
+        class="bg-white w-full max-w-sm
+               rounded-2xl shadow-xl p-6 space-y-4"
+    >
 
         <div class="flex items-center gap-2 text-blue-900">
+
             <i class="fa-solid fa-user-shield"></i>
-            <h3 class="font-bold">관리자 로그인</h3>
+
+            <h3 class="font-bold">
+                관리자 로그인
+            </h3>
+
         </div>
 
-        <form id="adminLoginForm"
-              class="space-y-3">
+
+        <form
+            id="adminLoginForm"
+            class="space-y-3"
+        >
 
             <div>
 
-                <label for="adminId"
-                       class="block text-xs font-medium
-                              text-slate-600 mb-1">
+                <label
+                    for="adminId"
+                    class="block text-xs font-medium
+                           text-slate-600 mb-1"
+                >
                     아이디
                 </label>
 
-                <input type="text"
-                       id="adminId"
-                       autocomplete="username"
-                       required
-                       class="w-full px-3 py-2 border
-                              rounded-lg text-sm
-                              focus:outline-none
-                              focus:ring-2 focus:ring-blue-500">
+                <input
+                    type="text"
+                    id="adminId"
+                    autocomplete="username"
+                    required
+                    class="w-full px-3 py-2 border
+                           rounded-lg text-sm
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-blue-500"
+                >
 
             </div>
 
 
             <div>
 
-                <label for="adminPassword"
-                       class="block text-xs font-medium
-                              text-slate-600 mb-1">
+                <label
+                    for="adminPassword"
+                    class="block text-xs font-medium
+                           text-slate-600 mb-1"
+                >
                     비밀번호
                 </label>
 
-                <input type="password"
-                       id="adminPassword"
-                       autocomplete="current-password"
-                       required
-                       class="w-full px-3 py-2 border
-                              rounded-lg text-sm
-                              focus:outline-none
-                              focus:ring-2 focus:ring-blue-500">
+                <input
+                    type="password"
+                    id="adminPassword"
+                    autocomplete="current-password"
+                    required
+                    class="w-full px-3 py-2 border
+                           rounded-lg text-sm
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-blue-500"
+                >
 
             </div>
 
 
-            <p id="adminLoginError"
-               class="hidden text-xs text-red-600
-                      bg-red-50 border border-red-200
-                      rounded-lg px-3 py-2">
-            </p>
+            <p
+                id="adminLoginError"
+                class="hidden text-xs text-red-600
+                       bg-red-50 border border-red-200
+                       rounded-lg px-3 py-2"
+            ></p>
 
 
             <div class="flex gap-2 pt-1">
 
-                <button type="button"
-                        id="adminCancelBtn"
-                        class="flex-1 py-2 rounded-lg text-sm
-                               font-medium border border-slate-300
-                               text-slate-600 hover:bg-slate-50">
+                <button
+                    type="button"
+                    id="adminCancelBtn"
+                    class="flex-1 py-2 rounded-lg
+                           text-sm font-medium
+                           border border-slate-300
+                           text-slate-600
+                           hover:bg-slate-50 transition"
+                >
                     취소
                 </button>
 
-                <button type="submit"
-                        id="adminSubmitBtn"
-                        class="flex-1 py-2 rounded-lg text-sm
-                               font-bold bg-blue-900 text-white
-                               hover:bg-blue-800
-                               disabled:opacity-60">
+
+                <button
+                    type="submit"
+                    id="adminSubmitBtn"
+                    class="flex-1 py-2 rounded-lg
+                           text-sm font-bold
+                           bg-blue-900 text-white
+                           hover:bg-blue-800 transition"
+                >
                     로그인
                 </button>
 
@@ -559,126 +708,248 @@
 
         </form>
 
-        <p class="text-[11px] text-slate-400 leading-relaxed">
-            브라우저 세션이 종료되면 관리자 로그인 상태도 종료됩니다.
-        </p>
-
     </div>
+
 </div>
 
 
-<!-- =========================================================
-     분실물 상세 모달
-========================================================= -->
-<div id="lostDetailModal"
-     class="hidden fixed inset-0 z-[90]
-            items-center justify-center
-            bg-slate-900/60 p-4">
+<!-- ============================================================
+     교복 상세보기 모달
+============================================================ -->
 
-    <div class="bg-white w-full max-w-lg
-                rounded-2xl shadow-xl modal-scroll">
+<div
+    id="uniformModal"
+    class="hidden fixed inset-0 z-[90]
+           items-center justify-center
+           bg-slate-900/60 p-4"
+>
 
-        <div class="p-5 border-b flex justify-between items-center">
+    <div
+        class="bg-white w-full max-w-lg
+               rounded-2xl shadow-xl
+               modal-scroll"
+    >
 
-            <h3 id="lostDetailTitle"
-                class="font-bold text-blue-900">
-                분실물 상세보기
-            </h3>
+        <div class="p-6">
 
-            <button id="lostDetailClose"
-                    class="text-slate-400 hover:text-slate-700 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="flex justify-between
+                        items-start gap-3 mb-5">
 
-        </div>
+                <div>
 
-        <div id="lostDetailContent"
-             class="p-5">
-        </div>
+                    <p
+                        id="uniformModalCategory"
+                        class="text-xs text-blue-600 font-bold mb-1"
+                    ></p>
 
-    </div>
-</div>
+                    <h3
+                        id="uniformModalTitle"
+                        class="text-xl font-bold text-blue-900"
+                    ></h3>
+
+                    <p
+                        id="uniformModalPrice"
+                        class="text-sm text-slate-500 mt-1"
+                    ></p>
+
+                </div>
 
 
-<!-- =========================================================
-     교복 상세 / 신청 모달
-========================================================= -->
-<div id="uniformModal"
-     class="hidden fixed inset-0 z-[90]
-            items-center justify-center
-            bg-slate-900/60 p-4">
+                <button
+                    id="uniformModalClose"
+                    class="text-slate-400 hover:text-slate-700
+                           text-xl"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
-    <div class="bg-white w-full max-w-lg
-                rounded-2xl shadow-xl modal-scroll">
-
-        <div class="p-5 border-b flex justify-between items-center">
-
-            <div>
-                <h3 id="uniformModalTitle"
-                    class="font-bold text-blue-900">
-                    교복 상세보기
-                </h3>
-
-                <p id="uniformModalPrice"
-                   class="text-xs text-slate-500 mt-1">
-                </p>
             </div>
 
-            <button id="uniformModalClose"
-                    class="text-slate-400 hover:text-slate-700 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
 
-        </div>
+            <!-- 관리자 사이즈 추가 -->
 
-        <div id="uniformModalContent"
-             class="p-5">
+            <div
+                class="admin-only bg-blue-50
+                       border border-blue-200
+                       rounded-xl p-4 mb-5"
+            >
+
+                <h4 class="font-bold text-sm text-blue-900 mb-3">
+
+                    <i class="fa-solid fa-gear mr-1"></i>
+
+                    관리자 재고 관리
+
+                </h4>
+
+
+                <div class="flex gap-2">
+
+                    <input
+                        type="number"
+                        id="newSizeInput"
+                        min="1"
+                        max="999"
+                        placeholder="사이즈 숫자"
+                        class="flex-grow px-3 py-2
+                               border rounded-lg
+                               text-sm bg-white"
+                    >
+
+
+                    <button
+                        id="addSizeBtn"
+                        class="bg-blue-900 text-white
+                               px-4 py-2 rounded-lg
+                               text-xs font-bold
+                               hover:bg-blue-800"
+                    >
+                        사이즈 추가
+                    </button>
+
+                </div>
+
+
+                <p class="text-[11px] text-blue-700 mt-2">
+                    예: 85를 입력하면 85 사이즈가 추가됩니다.
+                </p>
+
+            </div>
+
+
+            <!-- 사이즈 목록 -->
+
+            <div>
+
+                <h4 class="font-bold text-sm text-slate-700 mb-3">
+                    사이즈별 재고
+                </h4>
+
+
+                <div
+                    id="uniformSizeList"
+                    class="space-y-2"
+                ></div>
+
+            </div>
+
+
+            <div class="mt-5 pt-4 border-t">
+
+                <button
+                    id="uniformModalBottomClose"
+                    class="w-full py-2.5
+                           border border-slate-300
+                           rounded-lg text-sm
+                           font-medium text-slate-600
+                           hover:bg-slate-50"
+                >
+                    닫기
+                </button>
+
+            </div>
+
         </div>
 
     </div>
+
 </div>
 
 
-<!-- =========================================================
-     신청자 명단 모달
-========================================================= -->
-<div id="applicantModal"
-     class="hidden fixed inset-0 z-[95]
-            items-center justify-center
-            bg-slate-900/60 p-4">
+<!-- ============================================================
+     학생/분실물 댓글 모달
+============================================================ -->
 
-    <div class="bg-white w-full max-w-3xl
-                rounded-2xl shadow-xl modal-scroll">
+<div
+    id="commentModal"
+    class="hidden fixed inset-0 z-[90]
+           items-center justify-center
+           bg-slate-900/60 p-4"
+>
 
-        <div class="p-5 border-b flex justify-between items-center">
+    <div
+        class="bg-white w-full max-w-lg
+               rounded-2xl shadow-xl
+               modal-scroll"
+    >
 
-            <h3 class="font-bold text-blue-900">
-                교복 신청자 명단
-            </h3>
+        <div class="p-6">
 
-            <button id="applicantModalClose"
-                    class="text-slate-400 hover:text-slate-700 text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="flex justify-between
+                        items-center mb-4">
 
-        </div>
+                <h3
+                    id="commentModalTitle"
+                    class="font-bold text-lg text-blue-900"
+                >
+                    댓글
+                </h3>
 
-        <div id="applicantList"
-             class="p-5">
+
+                <button
+                    id="commentModalClose"
+                    class="text-slate-400
+                           hover:text-slate-700 text-xl"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div
+                id="commentList"
+                class="space-y-3 mb-5"
+            ></div>
+
+
+            <form
+                id="commentForm"
+                class="flex gap-2"
+            >
+
+                <input
+                    type="text"
+                    id="commentInput"
+                    maxlength="300"
+                    required
+                    placeholder="댓글을 입력하세요..."
+                    class="flex-grow px-3 py-2
+                           border rounded-lg text-sm
+                           focus:outline-none
+                           focus:ring-2
+                           focus:ring-blue-500"
+                >
+
+
+                <button
+                    type="submit"
+                    class="bg-blue-900 text-white
+                           px-4 py-2 rounded-lg
+                           text-sm font-bold"
+                >
+                    등록
+                </button>
+
+            </form>
+
         </div>
 
     </div>
+
 </div>
 
 
-<!-- =========================================================
-     Firebase
-========================================================= -->
+<!-- ============================================================
+     FIREBASE
+============================================================ -->
+
 <script type="module">
 
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+
 
 import {
     getFirestore,
@@ -691,6 +962,7 @@ import {
     runTransaction
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+
 import {
     getAuth,
     signInWithEmailAndPassword,
@@ -701,46 +973,55 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 
-/* =========================================================
+/* ============================================================
    Firebase 설정
-========================================================= */
+============================================================ */
 
 const firebaseConfig = {
+
     apiKey: "AIzaSyDhwMYq-_maT30RqGeafPV24IhjcFNXmxA",
+
     authDomain: "tyhs-project.firebaseapp.com",
+
     projectId: "tyhs-project",
+
     storageBucket: "tyhs-project.firebasestorage.app",
+
     messagingSenderId: "825220196122",
+
     appId: "1:825220196122:web:4b965a3486c52be411aea3",
+
     measurementId: "G-FEF868BVSS"
+
 };
 
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
+
 const auth = getAuth(app);
 
 
-/* 관리자 이메일 도메인 */
 const ADMIN_EMAIL_DOMAIN = "@tyhs-admin.kr";
 
 
-/* 브라우저 세션 동안만 로그인 */
-setPersistence(auth, browserSessionPersistence);
+setPersistence(
+    auth,
+    browserSessionPersistence
+);
 
 
 let isAdmin = false;
 
 
-/* =========================================================
+/* ============================================================
    공통 함수
-========================================================= */
+============================================================ */
 
 function escapeHtml(str) {
 
-    if (str === null || str === undefined) {
-        return "";
-    }
+    if (!str) return '';
 
     return String(str).replace(
         /[&<>'"]/g,
@@ -750,142 +1031,151 @@ function escapeHtml(str) {
             '>': '&gt;',
             "'": '&#39;',
             '"': '&quot;'
-        }[tag] || tag)
+        }[tag])
     );
 }
 
 
-function formatDate(timestamp) {
+/* ============================================================
+   탭
+============================================================ */
 
-    if (!timestamp) {
-        return "";
-    }
+window.switchTab = function(tabName) {
 
-    const date = new Date(timestamp);
+    [
+        'faq',
+        'qna',
+        'studentQna',
+        'lost',
+        'uniform'
+    ].forEach(t => {
 
-    return date.toLocaleString("ko-KR");
-}
+        document
+            .getElementById(`tab-${t}`)
+            .classList.add('hidden');
 
+        document
+            .getElementById(`btn-${t}`)
+            .classList.remove(
+                'bg-blue-800',
+                'text-white',
+                'shadow-sm'
+            );
+
+        document
+            .getElementById(`btn-${t}`)
+            .classList.add(
+                'hover:bg-blue-800'
+            );
+
+    });
+
+
+    document
+        .getElementById(`tab-${tabName}`)
+        .classList.remove('hidden');
+
+
+    document
+        .getElementById(`btn-${tabName}`)
+        .classList.remove(
+            'hover:bg-blue-800'
+        );
+
+
+    document
+        .getElementById(`btn-${tabName}`)
+        .classList.add(
+            'bg-blue-800',
+            'text-white',
+            'shadow-sm'
+        );
+
+};
+
+
+/* ============================================================
+   에러 처리
+============================================================ */
 
 function reportError(prefix, err) {
 
     console.error(prefix, err);
 
-    if (err && err.code === "permission-denied") {
+    if (
+        err &&
+        err.code === 'permission-denied'
+    ) {
 
         alert(
             prefix +
-            "\n\nFirebase 권한이 없습니다.\n" +
-            "관리자 기능이라면 관리자 로그인을 확인해주세요."
+            ": 권한이 없습니다. 관리자 로그인 상태를 확인해주세요."
         );
 
     } else {
 
         alert(
             prefix +
-            "\n\n" +
-            (err && err.message
-                ? err.message
-                : String(err))
+            ": " +
+            (
+                err &&
+                err.message
+                    ? err.message
+                    : err
+            )
         );
+
     }
+
 }
 
 
-/* =========================================================
-   탭
-========================================================= */
-
-window.switchTab = function(tabName) {
-
-    const tabs = [
-        "faq",
-        "qna",
-        "studentQna",
-        "lost",
-        "uniform"
-    ];
-
-    tabs.forEach(tab => {
-
-        const section =
-            document.getElementById(`tab-${tab}`);
-
-        const button =
-            document.getElementById(`btn-${tab}`);
-
-        section.classList.add("hidden");
-
-        button.classList.remove(
-            "bg-blue-800",
-            "text-white",
-            "shadow-sm"
-        );
-
-        button.classList.add("hover:bg-blue-800");
-    });
-
-
-    document
-        .getElementById(`tab-${tabName}`)
-        .classList.remove("hidden");
-
-
-    const activeButton =
-        document.getElementById(`btn-${tabName}`);
-
-    activeButton.classList.remove("hover:bg-blue-800");
-
-    activeButton.classList.add(
-        "bg-blue-800",
-        "text-white",
-        "shadow-sm"
-    );
-};
-
-
-/* =========================================================
-   관리자 인증
-========================================================= */
+/* ============================================================
+   관리자 로그인
+============================================================ */
 
 const adminModal =
-    document.getElementById("adminModal");
+    document.getElementById('adminModal');
 
 const adminLoginForm =
-    document.getElementById("adminLoginForm");
+    document.getElementById('adminLoginForm');
 
 const adminIdInput =
-    document.getElementById("adminId");
+    document.getElementById('adminId');
 
 const adminPwInput =
-    document.getElementById("adminPassword");
+    document.getElementById('adminPassword');
 
 const adminErrorBox =
-    document.getElementById("adminLoginError");
+    document.getElementById('adminLoginError');
 
 const adminSubmitBtn =
-    document.getElementById("adminSubmitBtn");
+    document.getElementById('adminSubmitBtn');
 
 
 function openAdminModal() {
 
-    adminErrorBox.classList.add("hidden");
+    adminErrorBox.classList.add('hidden');
 
     adminLoginForm.reset();
 
-    adminModal.classList.remove("hidden");
-    adminModal.classList.add("flex");
+    adminModal.classList.remove('hidden');
+
+    adminModal.classList.add('flex');
 
     adminIdInput.focus();
+
 }
 
 
 function closeAdminModal() {
 
-    adminModal.classList.add("hidden");
-    adminModal.classList.remove("flex");
+    adminModal.classList.add('hidden');
 
-    adminPwInput.value = "";
+    adminModal.classList.remove('flex');
+
+    adminPwInput.value = '';
+
 }
 
 
@@ -893,7 +1183,8 @@ function showAdminError(message) {
 
     adminErrorBox.textContent = message;
 
-    adminErrorBox.classList.remove("hidden");
+    adminErrorBox.classList.remove('hidden');
+
 }
 
 
@@ -901,82 +1192,97 @@ function authErrorMessage(code) {
 
     switch (code) {
 
-        case "auth/invalid-credential":
-        case "auth/wrong-password":
-        case "auth/user-not-found":
+        case 'auth/invalid-credential':
+        case 'auth/wrong-password':
+        case 'auth/user-not-found':
             return "아이디 또는 비밀번호가 올바르지 않습니다.";
 
-        case "auth/invalid-email":
+        case 'auth/invalid-email':
             return "아이디 형식이 올바르지 않습니다.";
 
-        case "auth/user-disabled":
+        case 'auth/user-disabled':
             return "비활성화된 계정입니다.";
 
-        case "auth/too-many-requests":
+        case 'auth/too-many-requests':
             return "로그인 시도가 너무 많습니다. 잠시 후 다시 시도해주세요.";
 
-        case "auth/network-request-failed":
+        case 'auth/network-request-failed':
             return "네트워크 연결을 확인해주세요.";
 
-        case "auth/operation-not-allowed":
-            return "Firebase에서 이메일/비밀번호 로그인이 활성화되어 있지 않습니다.";
+        case 'auth/operation-not-allowed':
+            return "이메일/비밀번호 로그인이 활성화되어 있지 않습니다.";
 
         default:
             return "로그인에 실패했습니다. (" + code + ")";
+
     }
+
 }
 
 
-document.getElementById("btn-admin-login").onclick =
-async () => {
+document
+    .getElementById('btn-admin-login')
+    .onclick = async () => {
 
-    if (isAdmin) {
+        if (isAdmin) {
 
-        if (confirm("관리자 계정에서 로그아웃하시겠습니까?")) {
+            if (
+                confirm(
+                    "관리자 계정에서 로그아웃 하시겠습니까?"
+                )
+            ) {
 
-            try {
                 await signOut(auth);
-            } catch (err) {
-                reportError("로그아웃 실패", err);
+
             }
+
+        } else {
+
+            openAdminModal();
+
         }
 
-    } else {
-
-        openAdminModal();
-    }
-};
+    };
 
 
-document.getElementById("adminCancelBtn").onclick =
-closeAdminModal;
+document
+    .getElementById('adminCancelBtn')
+    .onclick = closeAdminModal;
 
 
 adminModal.onclick = e => {
 
     if (e.target === adminModal) {
+
         closeAdminModal();
+
     }
+
 };
 
 
-document.addEventListener("keydown", e => {
+document.addEventListener(
+    'keydown',
+    e => {
 
-    if (
-        e.key === "Escape" &&
-        !adminModal.classList.contains("hidden")
-    ) {
-        closeAdminModal();
+        if (
+            e.key === 'Escape' &&
+            !adminModal.classList.contains('hidden')
+        ) {
+
+            closeAdminModal();
+
+        }
+
     }
-
-});
+);
 
 
 adminLoginForm.onsubmit = async e => {
 
     e.preventDefault();
 
-    adminErrorBox.classList.add("hidden");
+    adminErrorBox.classList.add('hidden');
 
     const rawId =
         adminIdInput.value.trim();
@@ -984,19 +1290,19 @@ adminLoginForm.onsubmit = async e => {
     const password =
         adminPwInput.value;
 
-    if (!rawId || !password) {
-        return;
-    }
+    if (!rawId || !password) return;
 
 
     const email =
-        rawId.includes("@")
+        rawId.includes('@')
             ? rawId
             : rawId + ADMIN_EMAIL_DOMAIN;
 
 
     adminSubmitBtn.disabled = true;
-    adminSubmitBtn.textContent = "로그인 중...";
+
+    adminSubmitBtn.textContent =
+        "로그인 중...";
 
 
     try {
@@ -1011,30 +1317,41 @@ adminLoginForm.onsubmit = async e => {
 
     } catch (err) {
 
-        console.error(err);
+        console.error(
+            "관리자 로그인 실패:",
+            err
+        );
 
         showAdminError(
             authErrorMessage(err.code)
         );
 
-        adminPwInput.value = "";
+        adminPwInput.value = '';
+
         adminPwInput.focus();
 
     } finally {
 
         adminSubmitBtn.disabled = false;
-        adminSubmitBtn.textContent = "로그인";
+
+        adminSubmitBtn.textContent =
+            "로그인";
+
     }
+
 };
 
 
 function updateAdminUI() {
 
     const btn =
-        document.getElementById("btn-admin-login");
+        document.getElementById(
+            'btn-admin-login'
+        );
+
 
     document.body.classList.toggle(
-        "is-admin",
+        'is-admin',
         isAdmin
     );
 
@@ -1060,101 +1377,19 @@ function updateAdminUI() {
             "px-3 py-1.5 rounded-lg bg-amber-600 " +
             "hover:bg-amber-500 text-white transition " +
             "text-xs font-bold ml-2 shadow-sm";
-    }
-}
 
-
-/* =========================================================
-   해시태그 처리
-========================================================= */
-
-function parseHashtags(input) {
-
-    const matches =
-        String(input || "").match(/#[^\s#]+/g) || [];
-
-    const tags = [];
-
-    matches.forEach(tag => {
-
-        const clean =
-            tag.trim().replace(/^#+/, "");
-
-        if (!clean) {
-            return;
-        }
-
-        const finalTag = "#" + clean;
-
-        if (!tags.includes(finalTag)) {
-            tags.push(finalTag);
-        }
-    });
-
-    return tags.slice(0, 10);
-}
-
-
-function renderTags(containerId, tags, activeTag, callback) {
-
-    const container =
-        document.getElementById(containerId);
-
-    container.innerHTML = "";
-
-
-    const allButton =
-        document.createElement("button");
-
-    allButton.type = "button";
-
-    allButton.textContent = "전체";
-
-    allButton.className =
-        "tag-button px-3 py-1 rounded-full " +
-        "border border-slate-300 text-xs " +
-        "bg-white hover:bg-slate-100";
-
-    if (!activeTag) {
-        allButton.classList.add("active");
     }
 
-    allButton.onclick = () => callback("");
-
-    container.appendChild(allButton);
-
-
-    tags.forEach(tag => {
-
-        const button =
-            document.createElement("button");
-
-        button.type = "button";
-
-        button.textContent = tag;
-
-        button.className =
-            "tag-button px-3 py-1 rounded-full " +
-            "border border-slate-300 text-xs " +
-            "bg-white hover:bg-slate-100";
-
-        if (activeTag === tag) {
-            button.classList.add("active");
-        }
-
-        button.onclick = () => callback(tag);
-
-        container.appendChild(button);
-    });
 }
 
 
-/* =========================================================
+/* ============================================================
    1. 선생님 질문 게시판
-========================================================= */
+============================================================ */
 
 let qnaData = [];
-let qnaActiveTag = "";
+
+let selectedQnaHashtag = '';
 
 
 onSnapshot(
@@ -1169,6 +1404,7 @@ onSnapshot(
                 id: docSnap.id,
                 ...docSnap.data()
             });
+
         });
 
 
@@ -1181,85 +1417,192 @@ onSnapshot(
 
         renderQnA();
 
+        renderQnaHashtags();
+
     },
-    err => {
-        console.error("선생님 질문 목록 구독 실패:", err);
-    }
+    err =>
+        console.error(
+            "질문 목록 구독 실패:",
+            err
+        )
 );
 
 
-function getAllQnaTags() {
+function normalizeHashtags(value) {
 
-    const set = new Set();
+    if (!Array.isArray(value)) {
+        return [];
+    }
+
+    return value
+        .map(x => String(x).trim())
+        .filter(Boolean)
+        .map(x =>
+            x.startsWith('#')
+                ? x
+                : '#' + x
+        );
+
+}
+
+
+function parseHashtags(text) {
+
+    if (!text) return [];
+
+    return text
+        .split(/[\s,]+/)
+        .map(x => x.trim())
+        .filter(Boolean)
+        .map(x =>
+            x.startsWith('#')
+                ? x
+                : '#' + x
+        )
+        .filter(
+            (value, index, arr) =>
+                arr.indexOf(value) === index
+        )
+        .slice(0, 10);
+
+}
+
+
+function renderQnaHashtags() {
+
+    const box =
+        document.getElementById(
+            'qnaHashtagList'
+        );
+
+    const all = new Set();
 
     qnaData.forEach(q => {
 
-        if (Array.isArray(q.hashtags)) {
+        normalizeHashtags(q.hashtags)
+            .forEach(tag =>
+                all.add(tag)
+            );
 
-            q.hashtags.forEach(tag => {
-                if (typeof tag === "string") {
-                    set.add(tag);
-                }
-            });
-        }
     });
 
-    return [...set].sort(
-        (a, b) => a.localeCompare(b, "ko")
-    );
+
+    box.innerHTML = '';
+
+
+    const allButton =
+        document.createElement('button');
+
+    allButton.textContent =
+        '전체';
+
+    allButton.className =
+        selectedQnaHashtag === ''
+            ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-900 text-white'
+            : 'px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+
+    allButton.onclick = () => {
+
+        selectedQnaHashtag = '';
+
+        renderQnaHashtags();
+
+        renderQnA();
+
+    };
+
+
+    box.appendChild(allButton);
+
+
+    [...all]
+        .sort()
+        .forEach(tag => {
+
+            const button =
+                document.createElement('button');
+
+            button.textContent = tag;
+
+            button.className =
+                selectedQnaHashtag === tag
+                    ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-900 text-white'
+                    : 'px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+
+            button.onclick = () => {
+
+                selectedQnaHashtag =
+                    tag;
+
+                renderQnaHashtags();
+
+                renderQnA();
+
+            };
+
+
+            box.appendChild(button);
+
+        });
+
 }
 
 
 function renderQnA() {
 
     const list =
-        document.getElementById("qnaList");
+        document.getElementById(
+            'qnaList'
+        );
 
     const keyword =
         document
-            .getElementById("qnaSearch")
+            .getElementById('qnaSearch')
             .value
-            .trim()
             .toLowerCase();
 
 
-    renderTags(
-        "qnaTags",
-        getAllQnaTags(),
-        qnaActiveTag,
-        tag => {
-
-            qnaActiveTag = tag;
-            renderQnA();
-        }
-    );
+    list.innerHTML = '';
 
 
-    list.innerHTML = "";
-
-
-    let filtered =
+    const filtered =
         qnaData.filter(q => {
 
-            const text =
-                (q.text || "").toLowerCase();
-
-            const answer =
-                (q.answer || "").toLowerCase();
-
-            const searchMatch =
-                !keyword ||
-                text.includes(keyword) ||
-                answer.includes(keyword);
-
-            const tagMatch =
-                !qnaActiveTag ||
-                (
-                    Array.isArray(q.hashtags) &&
-                    q.hashtags.includes(qnaActiveTag)
+            const tags =
+                normalizeHashtags(
+                    q.hashtags
                 );
 
-            return searchMatch && tagMatch;
+
+            const textMatch =
+                (
+                    q.text &&
+                    q.text
+                        .toLowerCase()
+                        .includes(keyword)
+                ) ||
+                (
+                    q.answer &&
+                    q.answer
+                        .toLowerCase()
+                        .includes(keyword)
+                );
+
+
+            const hashtagMatch =
+                !selectedQnaHashtag ||
+                tags.includes(
+                    selectedQnaHashtag
+                );
+
+
+            return (
+                textMatch &&
+                hashtagMatch
+            );
+
         });
 
 
@@ -1267,38 +1610,29 @@ function renderQnA() {
 
         list.innerHTML =
             `<p class="text-sm text-slate-400
-                       text-center py-6">
-                검색된 질문이 없습니다.
+                      text-center py-6">
+                등록된 질문이 없습니다.
              </p>`;
 
         return;
+
     }
 
 
     filtered.forEach(q => {
 
         const div =
-            document.createElement("div");
+            document.createElement('div');
 
         div.className =
             "p-4 bg-slate-50 rounded-xl " +
             "border border-slate-200 space-y-2";
 
 
-        const tagsHtml =
-            Array.isArray(q.hashtags)
-                ? q.hashtags
-                    .map(
-                        tag =>
-                            `<span class="inline-block
-                                         bg-blue-100 text-blue-700
-                                         rounded-full px-2 py-0.5
-                                         text-[11px] mr-1">
-                                ${escapeHtml(tag)}
-                             </span>`
-                    )
-                    .join("")
-                : "";
+        const tags =
+            normalizeHashtags(
+                q.hashtags
+            );
 
 
         div.innerHTML = `
@@ -1306,57 +1640,83 @@ function renderQnA() {
             <div class="flex justify-between
                         items-start gap-2">
 
-                <p class="font-bold text-sm text-slate-800">
-                    <i class="fa-solid fa-circle-question
+                <p class="font-bold text-sm
+                          text-slate-800">
+
+                    <i class="fa-solid
+                              fa-circle-question
                               text-blue-600 mr-1.5"></i>
-                    질문: ${escapeHtml(q.text)}
+
+                    질문:
+                    ${escapeHtml(q.text)}
+
                 </p>
+
 
                 <button
                     class="delete-qna admin-only
                            shrink-0 text-slate-400
-                           hover:text-red-500 text-xs">
-
+                           hover:text-red-500 text-xs"
+                >
                     <i class="fa-solid fa-trash"></i>
                     삭제
-
                 </button>
 
             </div>
 
-            <div>
-                ${tagsHtml}
+
+            <div class="flex flex-wrap gap-1">
+
+                ${tags.map(tag =>
+                    `<span class="text-[11px]
+                                 bg-blue-100
+                                 text-blue-700
+                                 px-2 py-0.5
+                                 rounded-full">
+                        ${escapeHtml(tag)}
+                    </span>`
+                ).join('')}
+
             </div>
 
-            <p class="text-[11px] text-slate-400">
-                ${formatDate(q.createdAt)}
-            </p>
 
             <div class="pl-5 pt-2
                         border-t border-slate-200
-                        answer-area">
+                        mt-2 answer-area">
             </div>
         `;
 
 
-        div.querySelector(".delete-qna").onclick =
-        async () => {
+        div.querySelector(
+            '.delete-qna'
+        ).onclick = async () => {
 
             if (!isAdmin) {
-                alert("관리자 로그인이 필요합니다.");
+
+                alert(
+                    "관리자 로그인이 필요합니다."
+                );
+
                 return;
+
             }
 
+
             if (
-                !confirm("정말 이 질문을 삭제하시겠습니까?")
-            ) {
-                return;
-            }
+                !confirm(
+                    "정말 이 질문을 삭제하시겠습니까?"
+                )
+            ) return;
+
 
             try {
 
                 await deleteDoc(
-                    doc(db, "qna", q.id)
+                    doc(
+                        db,
+                        "qna",
+                        q.id
+                    )
                 );
 
             } catch (err) {
@@ -1365,156 +1725,199 @@ function renderQnA() {
                     "질문 삭제 실패",
                     err
                 );
+
             }
+
         };
 
 
         const answerArea =
-            div.querySelector(".answer-area");
+            div.querySelector(
+                '.answer-area'
+            );
 
 
         if (q.answer) {
 
             answerArea.innerHTML =
-                `<p class="text-sm text-blue-900 font-medium">
-                    <i class="fa-solid fa-circle-check
-                              text-emerald-600 mr-1.5"></i>
+                `<p class="text-sm
+                          text-blue-900
+                          font-medium">
+
+                    <i class="fa-solid
+                              fa-circle-check
+                              text-emerald-600
+                              mr-1.5"></i>
+
                     ${escapeHtml(q.answer)}
+
                  </p>`;
-
-        } else if (isAdmin) {
-
-            const answerButton =
-                document.createElement("button");
-
-            answerButton.className =
-                "admin-only text-xs bg-white " +
-                "border border-slate-300 px-3 py-1 " +
-                "rounded-lg text-slate-600 " +
-                "hover:bg-slate-100";
-
-            answerButton.textContent =
-                "선생님 답글 달기";
-
-
-            answerButton.onclick =
-            async () => {
-
-                const answer =
-                    prompt("선생님 답글을 입력하세요:");
-
-                if (!answer || !answer.trim()) {
-                    return;
-                }
-
-                try {
-
-                    await updateDoc(
-                        doc(db, "qna", q.id),
-                        {
-                            answer:
-                                "담당 선생님: " +
-                                answer.trim()
-                        }
-                    );
-
-                } catch (err) {
-
-                    reportError(
-                        "답글 등록 실패",
-                        err
-                    );
-                }
-            };
-
-
-            answerArea.appendChild(answerButton);
 
         } else {
 
-            answerArea.innerHTML =
-                `<p class="text-xs text-slate-400">
-                    아직 답변이 등록되지 않았습니다.
-                 </p>`;
+            if (isAdmin) {
+
+                const ansBtn =
+                    document.createElement(
+                        'button'
+                    );
+
+                ansBtn.className =
+                    "text-xs bg-white " +
+                    "border border-slate-300 " +
+                    "px-3 py-1 rounded-lg " +
+                    "text-slate-600 " +
+                    "hover:bg-slate-100";
+
+
+                ansBtn.textContent =
+                    "선생님 답글 달기";
+
+
+                ansBtn.onclick = async () => {
+
+                    const ans =
+                        prompt(
+                            "선생님 답글을 입력하세요:"
+                        );
+
+
+                    if (
+                        !ans ||
+                        !ans.trim()
+                    ) return;
+
+
+                    try {
+
+                        await updateDoc(
+                            doc(
+                                db,
+                                "qna",
+                                q.id
+                            ),
+                            {
+                                answer:
+                                    "담당 선생님: " +
+                                    ans.trim()
+                            }
+                        );
+
+                    } catch (err) {
+
+                        reportError(
+                            "답글 등록 실패",
+                            err
+                        );
+
+                    }
+
+                };
+
+
+                answerArea.appendChild(
+                    ansBtn
+                );
+
+            }
+
+
+            const waiting =
+                document.createElement('p');
+
+            waiting.className =
+                "text-xs text-slate-400";
+
+            waiting.textContent =
+                "아직 답변이 등록되지 않았습니다.";
+
+            answerArea.appendChild(
+                waiting
+            );
+
         }
 
 
         list.appendChild(div);
+
     });
+
 }
 
 
-document.getElementById("qnaSearch").oninput =
-renderQnA;
+document
+    .getElementById('qnaSearch')
+    .oninput = renderQnA;
 
 
-document.getElementById("qnaForm").onsubmit =
-async e => {
+document
+    .getElementById('qnaForm')
+    .onsubmit = async e => {
 
-    e.preventDefault();
-
-    const input =
-        document.getElementById("questionInput");
-
-    const tagInput =
-        document.getElementById("qnaHashtagInput");
-
-    const submitBtn =
-        document.getElementById("qnaSubmitBtn");
+        e.preventDefault();
 
 
-    const text =
-        input.value.trim();
-
-    const hashtags =
-        parseHashtags(tagInput.value);
-
-
-    if (!text) {
-        return;
-    }
+        const input =
+            document.getElementById(
+                'questionInput'
+            );
 
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = "등록 중...";
+        const tagInput =
+            document.getElementById(
+                'qnaHashtags'
+            );
 
 
-    try {
-
-        await addDoc(
-            collection(db, "qna"),
-            {
-                text,
-                hashtags,
-                answer: "",
-                createdAt: Date.now()
-            }
-        );
-
-        input.value = "";
-        tagInput.value = "";
-
-    } catch (err) {
-
-        reportError(
-            "질문 등록 실패",
-            err
-        );
-
-    } finally {
-
-        submitBtn.disabled = false;
-        submitBtn.textContent = "질문하기";
-    }
-};
+        const text =
+            input.value.trim();
 
 
-/* =========================================================
+        if (!text) return;
+
+
+        const hashtags =
+            parseHashtags(
+                tagInput.value
+            );
+
+
+        try {
+
+            await addDoc(
+                collection(db, "qna"),
+                {
+                    text,
+                    hashtags,
+                    answer: '',
+                    createdAt: Date.now()
+                }
+            );
+
+
+            input.value = '';
+
+            tagInput.value = '';
+
+        } catch (err) {
+
+            reportError(
+                "질문 등록 실패",
+                err
+            );
+
+        }
+
+    };
+
+
+/* ============================================================
    2. 학생 질문 게시판
-========================================================= */
+============================================================ */
 
 let studentQnaData = [];
-let studentQnaActiveTag = "";
+
+let selectedStudentHashtag = '';
 
 
 onSnapshot(
@@ -1529,6 +1932,7 @@ onSnapshot(
                 id: docSnap.id,
                 ...docSnap.data()
             });
+
         });
 
 
@@ -1541,37 +1945,101 @@ onSnapshot(
 
         renderStudentQna();
 
+        renderStudentHashtags();
+
     },
-    err => {
+    err =>
         console.error(
-            "학생 질문 목록 구독 실패:",
+            "학생 질문 구독 실패:",
             err
-        );
-    }
+        )
 );
 
 
-function getAllStudentQnaTags() {
+function renderStudentHashtags() {
 
-    const set = new Set();
+    const box =
+        document.getElementById(
+            'studentHashtagList'
+        );
+
+
+    const all = new Set();
+
 
     studentQnaData.forEach(q => {
 
-        if (Array.isArray(q.hashtags)) {
+        normalizeHashtags(q.hashtags)
+            .forEach(tag =>
+                all.add(tag)
+            );
 
-            q.hashtags.forEach(tag => {
-
-                if (typeof tag === "string") {
-                    set.add(tag);
-                }
-
-            });
-        }
     });
 
-    return [...set].sort(
-        (a, b) => a.localeCompare(b, "ko")
-    );
+
+    box.innerHTML = '';
+
+
+    const allButton =
+        document.createElement('button');
+
+    allButton.textContent =
+        '전체';
+
+    allButton.className =
+        selectedStudentHashtag === ''
+            ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-900 text-white'
+            : 'px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+
+    allButton.onclick = () => {
+
+        selectedStudentHashtag = '';
+
+        renderStudentHashtags();
+
+        renderStudentQna();
+
+    };
+
+
+    box.appendChild(allButton);
+
+
+    [...all]
+        .sort()
+        .forEach(tag => {
+
+            const button =
+                document.createElement(
+                    'button'
+                );
+
+            button.textContent = tag;
+
+
+            button.className =
+                selectedStudentHashtag === tag
+                    ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-900 text-white'
+                    : 'px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+
+            button.onclick = () => {
+
+                selectedStudentHashtag =
+                    tag;
+
+                renderStudentHashtags();
+
+                renderStudentQna();
+
+            };
+
+
+            box.appendChild(button);
+
+        });
+
 }
 
 
@@ -1579,52 +2047,50 @@ function renderStudentQna() {
 
     const list =
         document.getElementById(
-            "studentQnaList"
+            'studentQnaList'
         );
+
 
     const keyword =
         document
-            .getElementById("studentQnaSearch")
+            .getElementById(
+                'studentQnaSearch'
+            )
             .value
-            .trim()
             .toLowerCase();
 
 
-    renderTags(
-        "studentQnaTags",
-        getAllStudentQnaTags(),
-        studentQnaActiveTag,
-        tag => {
-
-            studentQnaActiveTag = tag;
-            renderStudentQna();
-        }
-    );
-
-
-    list.innerHTML = "";
+    list.innerHTML = '';
 
 
     const filtered =
         studentQnaData.filter(q => {
 
-            const text =
-                (q.text || "").toLowerCase();
-
-            const searchMatch =
-                !keyword ||
-                text.includes(keyword);
-
-            const tagMatch =
-                !studentQnaActiveTag ||
-                (
-                    Array.isArray(q.hashtags) &&
-                    q.hashtags.includes(
-                        studentQnaActiveTag
-                    )
+            const tags =
+                normalizeHashtags(
+                    q.hashtags
                 );
 
-            return searchMatch && tagMatch;
+
+            const textMatch =
+                q.text &&
+                q.text
+                    .toLowerCase()
+                    .includes(keyword);
+
+
+            const hashtagMatch =
+                !selectedStudentHashtag ||
+                tags.includes(
+                    selectedStudentHashtag
+                );
+
+
+            return (
+                textMatch &&
+                hashtagMatch
+            );
+
         });
 
 
@@ -1632,115 +2098,118 @@ function renderStudentQna() {
 
         list.innerHTML =
             `<p class="text-sm text-slate-400
-                       text-center py-6">
+                      text-center py-6">
                 등록된 학생 질문이 없습니다.
              </p>`;
 
         return;
+
     }
 
 
     filtered.forEach(q => {
 
-        const card =
-            document.createElement("div");
+        const div =
+            document.createElement('div');
 
-        card.className =
+
+        div.className =
             "p-4 bg-slate-50 rounded-xl " +
             "border border-slate-200";
 
 
-        const tagsHtml =
-            Array.isArray(q.hashtags)
-                ? q.hashtags
-                    .map(
-                        tag =>
-                            `<span class="inline-block
-                                         bg-blue-100 text-blue-700
-                                         rounded-full px-2 py-0.5
-                                         text-[11px] mr-1">
-                                ${escapeHtml(tag)}
-                             </span>`
-                    )
-                    .join("")
-                : "";
+        const tags =
+            normalizeHashtags(
+                q.hashtags
+            );
 
 
-        card.innerHTML = `
+        div.innerHTML = `
 
             <div class="flex justify-between
                         items-start gap-2">
 
-                <p class="font-bold text-sm">
-                    <i class="fa-solid fa-circle-question
+                <p class="font-bold text-sm
+                          text-slate-800">
+
+                    <i class="fa-solid
+                              fa-circle-question
                               text-blue-600 mr-1.5"></i>
+
                     ${escapeHtml(q.text)}
+
                 </p>
 
-                <button
-                    class="student-delete admin-only
-                           text-slate-400
-                           hover:text-red-500 text-xs">
 
+                <button
+                    class="delete-student-qna
+                           admin-only shrink-0
+                           text-slate-400
+                           hover:text-red-500
+                           text-xs"
+                >
                     <i class="fa-solid fa-trash"></i>
                     삭제
-
                 </button>
 
             </div>
 
-            <div class="mt-2">
-                ${tagsHtml}
+
+            <div class="flex flex-wrap gap-1 mt-2">
+
+                ${tags.map(tag =>
+                    `<span class="text-[11px]
+                                 bg-blue-100
+                                 text-blue-700
+                                 px-2 py-0.5
+                                 rounded-full">
+                        ${escapeHtml(tag)}
+                    </span>`
+                ).join('')}
+
             </div>
 
-            <p class="text-[11px] text-slate-400 mt-2">
-                ${formatDate(q.createdAt)}
-            </p>
 
-            <div class="student-comments mt-4
-                        border-t border-slate-200 pt-3">
-            </div>
-
-            <form class="student-comment-form mt-3
-                         flex gap-2">
-
-                <input
-                    type="text"
-                    maxlength="300"
-                    placeholder="댓글을 입력하세요..."
-                    required
-                    class="flex-grow px-3 py-2
-                           border rounded-lg text-xs
-                           bg-white">
+            <div class="mt-3">
 
                 <button
-                    type="submit"
-                    class="bg-blue-900 text-white
-                           px-3 py-2 rounded-lg
-                           text-xs font-bold">
-                    댓글
+                    class="comment-student-qna
+                           text-xs bg-white
+                           border border-slate-300
+                           px-3 py-1.5 rounded-lg
+                           text-slate-600
+                           hover:bg-slate-100"
+                >
+                    <i class="fa-solid fa-comment mr-1"></i>
+                    댓글 보기
                 </button>
 
-            </form>
+            </div>
         `;
 
 
-        card.querySelector(".student-delete").onclick =
-        async () => {
+        div.querySelector(
+            '.delete-student-qna'
+        ).onclick = async () => {
 
-            if (!isAdmin) {
-                alert("관리자 로그인이 필요합니다.");
-                return;
-            }
+            if (!isAdmin) return;
 
-            if (!confirm("이 질문을 삭제하시겠습니까?")) {
-                return;
-            }
+
+            if (
+                !confirm(
+                    "이 질문을 삭제하시겠습니까?"
+                )
+            ) return;
+
 
             try {
 
                 await deleteDoc(
-                    doc(db, "studentQna", q.id)
+                    doc(
+                        db,
+                        "studentQna",
+                        q.id
+                    )
                 );
 
             } catch (err) {
@@ -1749,270 +2218,110 @@ function renderStudentQna() {
                     "학생 질문 삭제 실패",
                     err
                 );
+
             }
+
         };
 
 
-        const commentContainer =
-            card.querySelector(".student-comments");
+        div.querySelector(
+            '.comment-student-qna'
+        ).onclick = () => {
 
+            openCommentModal(
+                'studentQna',
+                q.id,
+                '학생 질문 댓글'
+            );
 
-        loadStudentComments(
-            q.id,
-            commentContainer
-        );
-
-
-        card.querySelector(
-            ".student-comment-form"
-        ).onsubmit = async e => {
-
-            e.preventDefault();
-
-            const input =
-                e.currentTarget.querySelector("input");
-
-            const text =
-                input.value.trim();
-
-            if (!text) {
-                return;
-            }
-
-            try {
-
-                await addDoc(
-                    collection(
-                        db,
-                        "studentQna",
-                        q.id,
-                        "comments"
-                    ),
-                    {
-                        text,
-                        createdAt: Date.now()
-                    }
-                );
-
-                input.value = "";
-
-            } catch (err) {
-
-                reportError(
-                    "댓글 등록 실패",
-                    err
-                );
-            }
         };
 
 
-        list.appendChild(card);
+        list.appendChild(div);
+
     });
+
 }
 
 
-function loadStudentComments(
-    questionId,
-    container
-) {
-
-    onSnapshot(
-        collection(
-            db,
-            "studentQna",
-            questionId,
-            "comments"
-        ),
-        snapshot => {
-
-            const comments = [];
-
-            snapshot.forEach(docSnap => {
-
-                comments.push({
-                    id: docSnap.id,
-                    ...docSnap.data()
-                });
-            });
+document
+    .getElementById(
+        'studentQnaSearch'
+    )
+    .oninput = renderStudentQna;
 
 
-            comments.sort(
-                (a, b) =>
-                    (a.createdAt || 0) -
-                    (b.createdAt || 0)
+document
+    .getElementById(
+        'studentQnaForm'
+    )
+    .onsubmit = async e => {
+
+        e.preventDefault();
+
+
+        const textInput =
+            document.getElementById(
+                'studentQuestionInput'
             );
 
 
-            container.innerHTML = "";
+        const tagInput =
+            document.getElementById(
+                'studentQnaHashtags'
+            );
 
 
-            if (comments.length === 0) {
-
-                container.innerHTML =
-                    `<p class="text-xs text-slate-400">
-                        아직 댓글이 없습니다.
-                     </p>`;
-
-                return;
-            }
+        const text =
+            textInput.value.trim();
 
 
-            comments.forEach(comment => {
-
-                const div =
-                    document.createElement("div");
-
-                div.className =
-                    "flex justify-between gap-2 " +
-                    "bg-white rounded-lg p-2 mb-2 " +
-                    "border border-slate-100";
+        if (!text) return;
 
 
-                div.innerHTML = `
-
-                    <div>
-
-                        <p class="text-sm">
-                            ${escapeHtml(comment.text)}
-                        </p>
-
-                        <p class="text-[10px]
-                                  text-slate-400 mt-1">
-                            ${formatDate(comment.createdAt)}
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="admin-only
-                               text-xs text-red-400
-                               hover:text-red-600">
-
-                        삭제
-
-                    </button>
-                `;
+        const hashtags =
+            parseHashtags(
+                tagInput.value
+            );
 
 
-                div.querySelector("button").onclick =
-                async () => {
+        try {
 
-                    if (!isAdmin) {
-                        return;
-                    }
-
-                    try {
-
-                        await deleteDoc(
-                            doc(
-                                db,
-                                "studentQna",
-                                questionId,
-                                "comments",
-                                comment.id
-                            )
-                        );
-
-                    } catch (err) {
-
-                        reportError(
-                            "댓글 삭제 실패",
-                            err
-                        );
-                    }
-                };
+            await addDoc(
+                collection(
+                    db,
+                    "studentQna"
+                ),
+                {
+                    text,
+                    hashtags,
+                    createdAt: Date.now()
+                }
+            );
 
 
-                container.appendChild(div);
-            });
-        },
-        err => {
-            console.error(
-                "학생 댓글 구독 실패:",
+            textInput.value = '';
+
+            tagInput.value = '';
+
+        } catch (err) {
+
+            reportError(
+                "학생 질문 등록 실패",
                 err
             );
+
         }
-    );
-}
+
+    };
 
 
-document.getElementById(
-    "studentQnaSearch"
-).oninput = renderStudentQna;
-
-
-document.getElementById(
-    "studentQnaForm"
-).onsubmit = async e => {
-
-    e.preventDefault();
-
-    const input =
-        document.getElementById(
-            "studentQuestionInput"
-        );
-
-    const tagInput =
-        document.getElementById(
-            "studentHashtagInput"
-        );
-
-    const button =
-        document.getElementById(
-            "studentQnaSubmitBtn"
-        );
-
-
-    const text =
-        input.value.trim();
-
-    const hashtags =
-        parseHashtags(tagInput.value);
-
-
-    if (!text) {
-        return;
-    }
-
-
-    button.disabled = true;
-    button.textContent = "등록 중...";
-
-
-    try {
-
-        await addDoc(
-            collection(db, "studentQna"),
-            {
-                text,
-                hashtags,
-                createdAt: Date.now()
-            }
-        );
-
-        input.value = "";
-        tagInput.value = "";
-
-    } catch (err) {
-
-        reportError(
-            "학생 질문 등록 실패",
-            err
-        );
-
-    } finally {
-
-        button.disabled = false;
-        button.textContent = "질문하기";
-    }
-};
-
-
-/* =========================================================
+/* ============================================================
    3. 분실물
-========================================================= */
+============================================================ */
 
-const MAX_IMAGE_DATA_LENGTH = 900000;
+const MAX_IMAGE_DATA_LENGTH =
+    900000;
 
 
 function compressImage(
@@ -2021,131 +2330,158 @@ function compressImage(
     quality = 0.7
 ) {
 
-    return new Promise((resolve, reject) => {
+    return new Promise(
+        (resolve, reject) => {
 
-        const reader =
-            new FileReader();
-
-
-        reader.onerror = () =>
-            reject(
-                new Error("파일을 읽을 수 없습니다.")
-            );
+            const reader =
+                new FileReader();
 
 
-        reader.onload = () => {
-
-            const img =
-                new Image();
-
-
-            img.onerror = () =>
+            reader.onerror = () =>
                 reject(
                     new Error(
-                        "이미지 형식을 인식할 수 없습니다."
+                        "파일을 읽을 수 없습니다."
                     )
                 );
 
 
-            img.onload = () => {
+            reader.onload = () => {
 
-                let {
-                    width,
-                    height
-                } = img;
+                const img =
+                    new Image();
 
 
-                if (
-                    width > height &&
-                    width > maxSize
-                ) {
-
-                    height =
-                        Math.round(
-                            height * maxSize / width
-                        );
-
-                    width = maxSize;
-
-                } else if (
-                    height >= width &&
-                    height > maxSize
-                ) {
-
-                    width =
-                        Math.round(
-                            width * maxSize / height
-                        );
-
-                    height = maxSize;
-                }
-
-
-                const canvas =
-                    document.createElement("canvas");
-
-                canvas.width = width;
-                canvas.height = height;
-
-
-                const ctx =
-                    canvas.getContext("2d");
-
-
-                ctx.fillStyle = "#ffffff";
-
-                ctx.fillRect(
-                    0,
-                    0,
-                    width,
-                    height
-                );
-
-
-                ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
-                );
-
-
-                let q = quality;
-
-                let dataUrl =
-                    canvas.toDataURL(
-                        "image/jpeg",
-                        q
+                img.onerror = () =>
+                    reject(
+                        new Error(
+                            "이미지 형식을 인식할 수 없습니다."
+                        )
                     );
 
 
-                while (
-                    dataUrl.length >
-                        MAX_IMAGE_DATA_LENGTH &&
-                    q > 0.3
-                ) {
+                img.onload = () => {
 
-                    q -= 0.1;
+                    let {
+                        width,
+                        height
+                    } = img;
 
-                    dataUrl =
-                        canvas.toDataURL(
-                            "image/jpeg",
-                            q
+
+                    if (
+                        width > height &&
+                        width > maxSize
+                    ) {
+
+                        height =
+                            Math.round(
+                                height *
+                                maxSize /
+                                width
+                            );
+
+                        width =
+                            maxSize;
+
+                    } else if (
+                        height >= width &&
+                        height > maxSize
+                    ) {
+
+                        width =
+                            Math.round(
+                                width *
+                                maxSize /
+                                height
+                            );
+
+                        height =
+                            maxSize;
+
+                    }
+
+
+                    const canvas =
+                        document.createElement(
+                            'canvas'
                         );
-                }
 
 
-                resolve(dataUrl);
+                    canvas.width =
+                        width;
+
+                    canvas.height =
+                        height;
+
+
+                    const ctx =
+                        canvas.getContext(
+                            '2d'
+                        );
+
+
+                    ctx.fillStyle =
+                        '#ffffff';
+
+                    ctx.fillRect(
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0,
+                        width,
+                        height
+                    );
+
+
+                    let dataUrl =
+                        canvas.toDataURL(
+                            'image/jpeg',
+                            quality
+                        );
+
+
+                    let q = quality;
+
+
+                    while (
+                        dataUrl.length >
+                            MAX_IMAGE_DATA_LENGTH &&
+                        q > 0.3
+                    ) {
+
+                        q -= 0.1;
+
+                        dataUrl =
+                            canvas.toDataURL(
+                                'image/jpeg',
+                                q
+                            );
+
+                    }
+
+
+                    resolve(dataUrl);
+
+                };
+
+
+                img.src =
+                    reader.result;
+
             };
 
 
-            img.src = reader.result;
-        };
+            reader.readAsDataURL(file);
 
+        }
+    );
 
-        reader.readAsDataURL(file);
-    });
 }
 
 
@@ -2158,12 +2494,14 @@ onSnapshot(
 
         lostData = [];
 
+
         snapshot.forEach(docSnap => {
 
             lostData.push({
                 id: docSnap.id,
                 ...docSnap.data()
             });
+
         });
 
 
@@ -2177,106 +2515,137 @@ onSnapshot(
         renderLost();
 
     },
-    err => {
-
+    err =>
         console.error(
             "분실물 목록 구독 실패:",
             err
-        );
-    }
+        )
 );
 
 
 function renderLost() {
 
     const list =
-        document.getElementById("lostList");
+        document.getElementById(
+            'lostList'
+        );
+
 
     const keyword =
-        document
-            .getElementById("lostSearch")
-            .value
-            .trim()
-            .toLowerCase();
+        document.getElementById(
+            'lostSearch'
+        )
+        .value
+        .toLowerCase();
 
 
-    list.innerHTML = "";
+    list.innerHTML = '';
 
 
     const filtered =
-        lostData.filter(item => {
+        lostData.filter(item =>
 
-            return (
-                (item.name || "")
+            (
+                item.name &&
+                item.name
                     .toLowerCase()
                     .includes(keyword)
-                ||
-                (item.location || "")
+            ) ||
+
+            (
+                item.location &&
+                item.location
                     .toLowerCase()
                     .includes(keyword)
-            );
-        });
+            )
+
+        );
 
 
     if (filtered.length === 0) {
 
         list.innerHTML =
             `<p class="text-sm text-slate-400
-                       text-center py-6
-                       col-span-full">
+                      text-center py-6
+                      col-span-full">
                 검색된 분실물이 없습니다.
              </p>`;
 
         return;
+
     }
 
 
     filtered.forEach(item => {
 
         const card =
-            document.createElement("div");
+            document.createElement(
+                'div'
+            );
+
 
         card.className =
-            "bg-white rounded-xl border " +
-            "border-slate-200 overflow-hidden " +
-            "flex flex-col";
+            "bg-white rounded-xl " +
+            "border border-slate-200 " +
+            "overflow-hidden flex flex-col " +
+            "justify-between";
 
 
         card.innerHTML = `
 
-            <div class="image-slot"></div>
+            <div>
 
-            <div class="p-3 flex-grow">
+                <div class="image-slot"></div>
 
-                <h3 class="font-bold text-sm
-                           text-slate-800">
-                    ${escapeHtml(item.name)}
-                </h3>
 
-                <p class="text-xs text-slate-500 mt-1">
-                    <i class="fa-solid fa-location-dot mr-1"></i>
-                    ${escapeHtml(item.location)}
-                </p>
+                <div class="p-3 space-y-1">
+
+                    <h3 class="font-bold text-sm
+                               text-slate-800">
+                        ${escapeHtml(item.name)}
+                    </h3>
+
+
+                    <p class="text-xs
+                              text-slate-500">
+
+                        <i class="fa-solid
+                                  fa-location-dot mr-1"></i>
+
+                        장소:
+                        ${escapeHtml(item.location)}
+
+                    </p>
+
+                </div>
 
             </div>
 
-            <div class="p-3 pt-0 flex gap-2">
+
+            <div class="p-3 pt-0
+                        flex justify-between gap-2">
 
                 <button
-                    class="detail-lost flex-grow
+                    class="lost-comment
                            bg-blue-50 text-blue-700
                            hover:bg-blue-100
-                           px-3 py-2 rounded-lg
-                           text-xs font-bold">
-                    자세히 보기
+                           px-3 py-1.5 rounded
+                           text-xs font-medium"
+                >
+                    <i class="fa-solid fa-comment mr-1"></i>
+                    댓글
                 </button>
 
+
                 <button
-                    class="delete-lost admin-only
-                           bg-red-50 text-red-500
+                    class="delete-lost
+                           admin-only bg-red-50
+                           text-red-500
                            hover:bg-red-100
-                           px-3 py-2 rounded-lg
-                           text-xs">
+                           px-3 py-1 rounded
+                           text-xs font-medium"
+                >
+                    <i class="fa-solid fa-trash mr-1"></i>
                     삭제
                 </button>
 
@@ -2285,58 +2654,86 @@ function renderLost() {
 
 
         const img =
-            document.createElement("img");
+            document.createElement(
+                'img'
+            );
+
 
         img.className =
-            "w-full h-40 object-cover bg-slate-100";
+            "w-full h-40 object-cover
+             bg-slate-100";
 
-        img.alt = "분실물 이미지";
 
-        img.loading = "lazy";
+        img.alt =
+            "분실물 이미지";
+
+
+        img.loading =
+            "lazy";
+
 
         img.onerror = () => {
+
             img.src =
-                "https://api.iconify.design/fluent-emoji-flat:package.svg";
+                'https://api.iconify.design/fluent-emoji-flat:package.svg';
+
         };
 
-        img.src = item.imageUrl || "";
+
+        img.src =
+            item.imageUrl || '';
+
+
+        card
+            .querySelector(
+                '.image-slot'
+            )
+            .appendChild(img);
 
 
         card.querySelector(
-            ".image-slot"
-        ).appendChild(img);
-
-
-        card.querySelector(
-            ".detail-lost"
+            '.lost-comment'
         ).onclick = () => {
 
-            openLostDetail(item);
+            openCommentModal(
+                'lostItems',
+                item.id,
+                '분실물 댓글'
+            );
+
         };
 
 
         card.querySelector(
-            ".delete-lost"
+            '.delete-lost'
         ).onclick = async () => {
 
             if (!isAdmin) {
-                alert("관리자 로그인이 필요합니다.");
+
+                alert(
+                    "관리자 로그인이 필요합니다."
+                );
+
                 return;
+
             }
+
 
             if (
                 !confirm(
                     "정말 이 분실물 내역을 삭제하시겠습니까?"
                 )
-            ) {
-                return;
-            }
+            ) return;
 
 
             try {
 
                 await deleteDoc(
-                    doc(db, "lostItems", item.id)
+                    doc(
+                        db,
+                        "lostItems",
+                        item.id
+                    )
                 );
 
             } catch (err) {
@@ -2345,160 +2742,464 @@ function renderLost() {
                     "분실물 삭제 실패",
                     err
                 );
+
             }
+
         };
 
 
         list.appendChild(card);
+
     });
+
 }
 
 
-document.getElementById("lostSearch").oninput =
-renderLost;
+document
+    .getElementById('lostSearch')
+    .oninput = renderLost;
 
 
-/* =========================================================
-   분실물 상세 + 댓글
-========================================================= */
-
-const lostDetailModal =
-    document.getElementById(
-        "lostDetailModal"
-    );
-
-
-document.getElementById(
-    "lostDetailClose"
-).onclick = () => {
-
-    lostDetailModal.classList.add("hidden");
-    lostDetailModal.classList.remove("flex");
-};
-
-
-lostDetailModal.onclick = e => {
-
-    if (e.target === lostDetailModal) {
-
-        lostDetailModal.classList.add("hidden");
-        lostDetailModal.classList.remove("flex");
-    }
-};
-
-
-function openLostDetail(item) {
-
-    document.getElementById(
-        "lostDetailTitle"
-    ).textContent =
-        item.name;
-
-
-    const content =
-        document.getElementById(
-            "lostDetailContent"
-        );
-
-
-    content.innerHTML = `
-
-        <img
-            src="${escapeHtml(item.imageUrl || "")}"
-            alt="분실물"
-            class="w-full max-h-80 object-contain
-                   bg-slate-100 rounded-xl mb-4">
-
-        <div class="space-y-1 mb-5">
-
-            <p class="font-bold text-lg">
-                ${escapeHtml(item.name)}
-            </p>
-
-            <p class="text-sm text-slate-500">
-                <i class="fa-solid fa-location-dot mr-1"></i>
-                ${escapeHtml(item.location)}
-            </p>
-
-            <p class="text-xs text-slate-400">
-                등록일:
-                ${formatDate(item.createdAt)}
-            </p>
-
-        </div>
-
-        <div class="border-t pt-4">
-
-            <h4 class="font-bold text-blue-900 mb-3">
-                댓글
-            </h4>
-
-            <div
-                id="lostComments"
-                class="space-y-2 mb-3">
-            </div>
-
-            <form
-                id="lostCommentForm"
-                class="flex gap-2">
-
-                <input
-                    type="text"
-                    id="lostCommentInput"
-                    maxlength="300"
-                    required
-                    placeholder="댓글을 입력하세요..."
-                    class="flex-grow px-3 py-2
-                           border rounded-lg text-sm">
-
-                <button
-                    type="submit"
-                    class="bg-blue-900 text-white
-                           px-4 py-2 rounded-lg
-                           text-sm font-bold">
-                    댓글
-                </button>
-
-            </form>
-
-        </div>
-    `;
-
-
-    lostDetailModal.classList.remove("hidden");
-    lostDetailModal.classList.add("flex");
-
-
-    const commentContainer =
-        document.getElementById(
-            "lostComments"
-        );
-
-
-    loadLostComments(
-        item.id,
-        commentContainer
-    );
-
-
-    document.getElementById(
-        "lostCommentForm"
-    ).onsubmit = async e => {
+document
+    .getElementById('lostForm')
+    .onsubmit = async e => {
 
         e.preventDefault();
 
-        const input =
+
+        const form =
+            e.currentTarget;
+
+
+        const submitBtn =
             document.getElementById(
-                "lostCommentInput"
+                'lostSubmitBtn'
             );
 
-        const text =
-            input.value.trim();
+
+        const name =
+            document
+                .getElementById(
+                    'itemName'
+                )
+                .value
+                .trim();
 
 
-        if (!text) {
+        const location =
+            document
+                .getElementById(
+                    'itemLocation'
+                )
+                .value
+                .trim();
+
+
+        const file =
+            document
+                .getElementById(
+                    'itemImage'
+                )
+                .files[0];
+
+
+        if (!name || !location) {
+
+            alert(
+                "물품 이름과 장소를 입력해주세요."
+            );
+
             return;
+
         }
+
+
+        if (!file) {
+
+            alert(
+                "이미지 파일을 선택해주세요."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            !file.type.startsWith(
+                'image/'
+            )
+        ) {
+
+            alert(
+                "이미지 파일만 등록할 수 있습니다."
+            );
+
+            return;
+
+        }
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "등록 중...";
+
+
+        try {
+
+            const imageUrl =
+                await compressImage(
+                    file
+                );
+
+
+            if (
+                imageUrl.length >
+                MAX_IMAGE_DATA_LENGTH
+            ) {
+
+                alert(
+                    "이미지 용량이 너무 큽니다."
+                );
+
+                return;
+
+            }
+
+
+            await addDoc(
+                collection(
+                    db,
+                    "lostItems"
+                ),
+                {
+                    name,
+                    location,
+                    imageUrl,
+                    createdAt: Date.now()
+                }
+            );
+
+
+            alert(
+                "성공적으로 등록되었습니다!"
+            );
+
+
+            form.reset();
+
+        } catch (err) {
+
+            reportError(
+                "분실물 등록 실패",
+                err
+            );
+
+        } finally {
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent =
+                "등록하기";
+
+        }
+
+    };
+
+
+/* ============================================================
+   4. 댓글 시스템
+============================================================ */
+
+const commentModal =
+    document.getElementById(
+        'commentModal'
+    );
+
+const commentList =
+    document.getElementById(
+        'commentList'
+    );
+
+const commentForm =
+    document.getElementById(
+        'commentForm'
+    );
+
+const commentInput =
+    document.getElementById(
+        'commentInput'
+    );
+
+const commentModalTitle =
+    document.getElementById(
+        'commentModalTitle'
+    );
+
+
+let currentCommentCollection = null;
+
+let currentCommentParentId = null;
+
+let unsubscribeComments = null;
+
+
+function openCommentModal(
+    collectionName,
+    parentId,
+    title
+) {
+
+    if (unsubscribeComments) {
+
+        unsubscribeComments();
+
+        unsubscribeComments = null;
+
+    }
+
+
+    currentCommentCollection =
+        collectionName;
+
+    currentCommentParentId =
+        parentId;
+
+
+    commentModalTitle.textContent =
+        title;
+
+
+    commentList.innerHTML =
+        `<p class="text-sm text-slate-400
+                  text-center py-5">
+            댓글을 불러오는 중...
+         </p>`;
+
+
+    commentModal.classList.remove(
+        'hidden'
+    );
+
+    commentModal.classList.add(
+        'flex'
+    );
+
+
+    unsubscribeComments =
+        onSnapshot(
+            collection(
+                db,
+                collectionName,
+                parentId,
+                "comments"
+            ),
+            snapshot => {
+
+                const comments = [];
+
+
+                snapshot.forEach(
+                    docSnap => {
+
+                        comments.push({
+                            id: docSnap.id,
+                            ...docSnap.data()
+                        });
+
+                    }
+                );
+
+
+                comments.sort(
+                    (a, b) =>
+                        (a.createdAt || 0) -
+                        (b.createdAt || 0)
+                );
+
+
+                renderComments(
+                    comments
+                );
+
+            },
+            err => {
+
+                console.error(
+                    "댓글 구독 실패:",
+                    err
+                );
+
+                commentList.innerHTML =
+                    `<p class="text-sm
+                              text-red-500">
+                        댓글을 불러오지 못했습니다.
+                     </p>`;
+
+            }
+        );
+
+}
+
+
+function closeCommentModal() {
+
+    commentModal.classList.add(
+        'hidden'
+    );
+
+    commentModal.classList.remove(
+        'flex'
+    );
+
+
+    if (unsubscribeComments) {
+
+        unsubscribeComments();
+
+        unsubscribeComments = null;
+
+    }
+
+
+    currentCommentCollection = null;
+
+    currentCommentParentId = null;
+
+}
+
+
+function renderComments(comments) {
+
+    commentList.innerHTML = '';
+
+
+    if (comments.length === 0) {
+
+        commentList.innerHTML =
+            `<p class="text-sm text-slate-400
+                      text-center py-5">
+                아직 댓글이 없습니다.
+             </p>`;
+
+        return;
+
+    }
+
+
+    comments.forEach(comment => {
+
+        const div =
+            document.createElement(
+                'div'
+            );
+
+
+        div.className =
+            "p-3 bg-slate-50 rounded-xl " +
+            "border border-slate-200";
+
+
+        div.innerHTML = `
+
+            <div class="flex justify-between
+                        gap-2">
+
+                <p class="text-sm
+                          text-slate-700
+                          whitespace-pre-wrap">
+                    ${escapeHtml(
+                        comment.text
+                    )}
+                </p>
+
+
+                <button
+                    class="delete-comment
+                           admin-only shrink-0
+                           text-xs text-red-400
+                           hover:text-red-600"
+                >
+                    삭제
+                </button>
+
+            </div>
+
+
+            <p class="text-[10px]
+                      text-slate-400 mt-1">
+                ${new Date(
+                    comment.createdAt || Date.now()
+                ).toLocaleString()}
+            </p>
+        `;
+
+
+        div.querySelector(
+            '.delete-comment'
+        ).onclick = async () => {
+
+            if (!isAdmin) return;
+
+
+            if (
+                !confirm(
+                    "이 댓글을 삭제하시겠습니까?"
+                )
+            ) return;
+
+
+            try {
+
+                await deleteDoc(
+                    doc(
+                        db,
+                        currentCommentCollection,
+                        currentCommentParentId,
+                        "comments",
+                        comment.id
+                    )
+                );
+
+            } catch (err) {
+
+                reportError(
+                    "댓글 삭제 실패",
+                    err
+                );
+
+            }
+
+        };
+
+
+        commentList.appendChild(
+            div
+        );
+
+    });
+
+}
+
+
+commentForm.onsubmit =
+    async e => {
+
+        e.preventDefault();
+
+
+        const text =
+            commentInput.value.trim();
+
+
+        if (!text) return;
+
+
+        if (
+            !currentCommentCollection ||
+            !currentCommentParentId
+        ) return;
 
 
         try {
@@ -2506,8 +3207,8 @@ function openLostDetail(item) {
             await addDoc(
                 collection(
                     db,
-                    "lostItems",
-                    item.id,
+                    currentCommentCollection,
+                    currentCommentParentId,
                     "comments"
                 ),
                 {
@@ -2516,270 +3217,66 @@ function openLostDetail(item) {
                 }
             );
 
-            input.value = "";
+
+            commentInput.value = '';
 
         } catch (err) {
 
             reportError(
-                "분실물 댓글 등록 실패",
+                "댓글 등록 실패",
                 err
             );
+
         }
+
     };
-}
 
 
-function loadLostComments(
-    itemId,
-    container
-) {
-
-    onSnapshot(
-        collection(
-            db,
-            "lostItems",
-            itemId,
-            "comments"
-        ),
-        snapshot => {
-
-            const comments = [];
-
-            snapshot.forEach(docSnap => {
-
-                comments.push({
-                    id: docSnap.id,
-                    ...docSnap.data()
-                });
-            });
+document
+    .getElementById(
+        'commentModalClose'
+    )
+    .onclick =
+        closeCommentModal;
 
 
-            comments.sort(
-                (a, b) =>
-                    (a.createdAt || 0) -
-                    (b.createdAt || 0)
-            );
+commentModal.onclick = e => {
 
+    if (
+        e.target === commentModal
+    ) {
 
-            container.innerHTML = "";
+        closeCommentModal();
 
-
-            if (comments.length === 0) {
-
-                container.innerHTML =
-                    `<p class="text-xs text-slate-400">
-                        아직 댓글이 없습니다.
-                     </p>`;
-
-                return;
-            }
-
-
-            comments.forEach(comment => {
-
-                const div =
-                    document.createElement("div");
-
-                div.className =
-                    "bg-slate-50 border " +
-                    "border-slate-200 rounded-lg " +
-                    "p-3 flex justify-between gap-2";
-
-
-                div.innerHTML = `
-
-                    <div>
-
-                        <p class="text-sm">
-                            ${escapeHtml(comment.text)}
-                        </p>
-
-                        <p class="text-[10px]
-                                  text-slate-400 mt-1">
-                            ${formatDate(comment.createdAt)}
-                        </p>
-
-                    </div>
-
-                    <button
-                        class="admin-only
-                               text-xs text-red-400
-                               hover:text-red-600">
-                        삭제
-                    </button>
-                `;
-
-
-                div.querySelector("button").onclick =
-                async () => {
-
-                    if (!isAdmin) {
-                        return;
-                    }
-
-                    try {
-
-                        await deleteDoc(
-                            doc(
-                                db,
-                                "lostItems",
-                                itemId,
-                                "comments",
-                                comment.id
-                            )
-                        );
-
-                    } catch (err) {
-
-                        reportError(
-                            "댓글 삭제 실패",
-                            err
-                        );
-                    }
-                };
-
-
-                container.appendChild(div);
-            });
-        },
-        err => {
-
-            console.error(
-                "분실물 댓글 구독 실패:",
-                err
-            );
-        }
-    );
-}
-
-
-/* =========================================================
-   분실물 등록
-========================================================= */
-
-document.getElementById(
-    "lostForm"
-).onsubmit = async e => {
-
-    e.preventDefault();
-
-
-    const form =
-        e.currentTarget;
-
-    const submitBtn =
-        document.getElementById(
-            "lostSubmitBtn"
-        );
-
-
-    const name =
-        document.getElementById(
-            "itemName"
-        ).value.trim();
-
-
-    const location =
-        document.getElementById(
-            "itemLocation"
-        ).value.trim();
-
-
-    const file =
-        document.getElementById(
-            "itemImage"
-        ).files[0];
-
-
-    if (!name || !location) {
-
-        alert(
-            "물품 이름과 장소를 입력해주세요."
-        );
-
-        return;
     }
 
-
-    if (!file) {
-
-        alert(
-            "이미지 파일을 선택해주세요."
-        );
-
-        return;
-    }
-
-
-    if (!file.type.startsWith("image/")) {
-
-        alert(
-            "이미지 파일만 등록할 수 있습니다."
-        );
-
-        return;
-    }
-
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = "등록 중...";
-
-
-    try {
-
-        const imageUrl =
-            await compressImage(file);
-
-
-        if (
-            imageUrl.length >
-            MAX_IMAGE_DATA_LENGTH
-        ) {
-
-            alert(
-                "이미지 용량이 너무 큽니다."
-            );
-
-            return;
-        }
-
-
-        await addDoc(
-            collection(db, "lostItems"),
-            {
-                name,
-                location,
-                imageUrl,
-                createdAt: Date.now()
-            }
-        );
-
-
-        alert(
-            "분실물이 성공적으로 등록되었습니다!"
-        );
-
-
-        form.reset();
-
-    } catch (err) {
-
-        reportError(
-            "분실물 등록 실패",
-            err
-        );
-
-    } finally {
-
-        submitBtn.disabled = false;
-        submitBtn.textContent = "등록하기";
-    }
 };
 
 
-/* =========================================================
-   4. 교복실
-========================================================= */
+/* ============================================================
+   5. 교복 시스템
+============================================================ */
+
+
+/*
+ * 중요
+ *
+ * 교복 항목 삭제 기능은 존재하지 않는다.
+ *
+ * 관리자는:
+ * - 사이즈 추가
+ * - 사이즈 재고 수정
+ *
+ * 만 할 수 있다.
+ *
+ * 학생은:
+ * - 자세히 보기
+ * - 사이즈 확인
+ * - 사이즈 신청
+ *
+ * 만 할 수 있다.
+ */
+
 
 const defaultUniforms = [
 
@@ -2788,10 +3285,9 @@ const defaultUniforms = [
         name: "하복 상의",
         price: "1,000원",
         sizes: {
-            "85": 10,
-            "90": 10,
-            "95": 10,
-            "100": 10
+            "85": 3,
+            "90": 5,
+            "95": 2
         }
     },
 
@@ -2800,10 +3296,9 @@ const defaultUniforms = [
         name: "하복 하의",
         price: "1,000원",
         sizes: {
-            "70": 5,
+            "70": 3,
             "75": 5,
-            "80": 5,
-            "85": 5
+            "80": 2
         }
     },
 
@@ -2812,10 +3307,9 @@ const defaultUniforms = [
         name: "동복 바지",
         price: "1,000원",
         sizes: {
-            "70": 5,
-            "75": 5,
-            "80": 5,
-            "85": 5
+            "70": 2,
+            "75": 4,
+            "80": 4
         }
     },
 
@@ -2833,9 +3327,9 @@ const defaultUniforms = [
         name: "마이",
         price: "2,000원",
         sizes: {
-            "85": 5,
-            "90": 5,
-            "95": 5
+            "85": 1,
+            "90": 2,
+            "95": 2
         }
     },
 
@@ -2844,9 +3338,9 @@ const defaultUniforms = [
         name: "와이셔츠",
         price: "1,000원",
         sizes: {
-            "85": 5,
+            "85": 3,
             "90": 5,
-            "95": 5
+            "95": 4
         }
     },
 
@@ -2855,158 +3349,201 @@ const defaultUniforms = [
         name: "조끼",
         price: "1,000원",
         sizes: {
-            "85": 5,
-            "90": 5,
-            "95": 5
+            "85": 2,
+            "90": 3,
+            "95": 3
         }
     }
+
 ];
 
 
 let uniformData = [];
-let applicantData = [];
 
-let seedingDone = false;
+
+let selectedUniform = null;
+
+
+let unsubscribeUniforms = null;
+
+
+/* ============================================================
+   기본 교복 자동 복구
+============================================================ */
+
+/*
+ * 동복 바지를 실수로 삭제했더라도
+ * 관리자 로그인 후 Firestore의 uniforms에
+ * 해당 항목이 없으면 다시 생성한다.
+ *
+ * 기존 항목이 있으면 건드리지 않는다.
+ */
+
+async function restoreMissingDefaultUniforms() {
+
+    if (!isAdmin) return;
+
+
+    try {
+
+        const existingNames =
+            new Set(
+                uniformData.map(
+                    item =>
+                        `${item.category}|${item.name}`
+                )
+            );
+
+
+        for (
+            const item of defaultUniforms
+        ) {
+
+            const key =
+                `${item.category}|${item.name}`;
+
+
+            if (
+                existingNames.has(key)
+            ) {
+
+                continue;
+
+            }
+
+
+            await addDoc(
+                collection(
+                    db,
+                    "uniforms"
+                ),
+                {
+                    category:
+                        item.category,
+
+                    name:
+                        item.name,
+
+                    price:
+                        item.price,
+
+                    sizes:
+                        item.sizes
+                }
+            );
+
+
+            console.log(
+                "기본 교복 항목 복구:",
+                item.name
+            );
+
+        }
+
+    } catch (err) {
+
+        console.error(
+            "기본 교복 복구 실패:",
+            err
+        );
+
+    }
+
+}
 
 
 onSnapshot(
-    collection(db, "uniforms"),
+    collection(
+        db,
+        "uniforms"
+    ),
     async snapshot => {
 
         uniformData = [];
 
-        snapshot.forEach(docSnap => {
 
-            uniformData.push({
-                id: docSnap.id,
-                ...docSnap.data()
-            });
-        });
+        snapshot.forEach(
+            docSnap => {
+
+                uniformData.push({
+                    id: docSnap.id,
+                    ...docSnap.data()
+                });
+
+            }
+        );
 
 
         renderUniform();
 
 
         /*
-         * 처음 DB가 비어 있을 경우
-         * 관리자 접속 시 기본 목록 생성
+         * 관리자라면 삭제된 기본 교복을
+         * 자동으로 복구한다.
          */
-        if (
-            uniformData.length === 0 &&
-            isAdmin &&
-            !seedingDone
-        ) {
+        if (isAdmin) {
 
-            seedingDone = true;
+            await restoreMissingDefaultUniforms();
 
-            try {
-
-                for (
-                    const item of defaultUniforms
-                ) {
-
-                    await addDoc(
-                        collection(db, "uniforms"),
-                        item
-                    );
-                }
-
-            } catch (err) {
-
-                seedingDone = false;
-
-                reportError(
-                    "기본 교복 목록 생성 실패",
-                    err
-                );
-            }
         }
 
     },
-    err => {
-
+    err =>
         console.error(
             "교복 목록 구독 실패:",
             err
-        );
-    }
+        )
 );
 
 
-/* =========================================================
-   교복 화면
-========================================================= */
+/* ============================================================
+   교복 총 재고
+============================================================ */
 
-function getSortedSizes(sizes) {
+function getTotalQty(item) {
 
-    if (!sizes || typeof sizes !== "object") {
-        return [];
-    }
-
-
-    return Object.keys(sizes).sort(
-        (a, b) => {
-
-            const na = Number(a);
-            const nb = Number(b);
+    const sizes =
+        item.sizes || {};
 
 
-            if (
-                !Number.isNaN(na) &&
-                !Number.isNaN(nb)
-            ) {
-                return na - nb;
-            }
-
-
-            return a.localeCompare(
-                b,
-                "ko"
-            );
-        }
+    return Object.values(
+        sizes
+    ).reduce(
+        (sum, qty) =>
+            sum +
+            (
+                Number.isFinite(
+                    Number(qty)
+                )
+                    ? Number(qty)
+                    : 0
+            ),
+        0
     );
+
 }
 
 
-function totalUniformStock(sizes) {
-
-    if (!sizes) {
-        return 0;
-    }
-
-
-    return Object.values(sizes)
-        .reduce(
-            (sum, value) =>
-                sum +
-                (
-                    Number.isFinite(
-                        Number(value)
-                    )
-                        ? Number(value)
-                        : 0
-                ),
-            0
-        );
-}
-
+/* ============================================================
+   교복 표 렌더링
+============================================================ */
 
 function renderUniform() {
 
     const tbody =
         document.getElementById(
-            "uniformTable"
+            'uniformTable'
         );
 
 
-    tbody.innerHTML = "";
+    tbody.innerHTML = '';
 
 
     if (uniformData.length === 0) {
 
         tbody.innerHTML =
             `<tr>
-                <td colspan="6"
+                <td colspan="5"
                     class="p-6 text-center
                            text-sm text-slate-400">
                     등록된 교복 항목이 없습니다.
@@ -3014,47 +3551,11 @@ function renderUniform() {
              </tr>`;
 
         return;
+
     }
 
 
     uniformData.forEach(item => {
-
-        const tr =
-            document.createElement("tr");
-
-
-        tr.className =
-            "hover:bg-slate-50 transition";
-
-
-        const sizes =
-            item.sizes || {};
-
-
-        const sizeKeys =
-            getSortedSizes(sizes);
-
-
-        const sizeSummary =
-            sizeKeys.length
-                ? sizeKeys
-                    .map(
-                        size =>
-                            `<span class="inline-block
-                                         px-2 py-1 mr-1 mb-1
-                                         rounded-full
-                                         bg-slate-100
-                                         text-xs">
-                                ${escapeHtml(size)}
-                                :
-                                ${Number(sizes[size]) || 0}
-                             </span>`
-                    )
-                    .join("")
-                : `<span class="text-xs text-slate-400">
-                        사이즈 없음
-                   </span>`;
-
 
         const badgeColor =
             item.category === "하복"
@@ -3062,905 +3563,619 @@ function renderUniform() {
                 : "bg-indigo-100 text-indigo-800";
 
 
+        const totalQty =
+            getTotalQty(item);
+
+
+        const tr =
+            document.createElement(
+                'tr'
+            );
+
+
+        tr.className =
+            "hover:bg-slate-50 transition";
+
+
         tr.innerHTML = `
 
             <td class="p-3">
-                <span class="px-2.5 py-1
-                             rounded-full text-xs
-                             font-bold ${badgeColor}">
-                    ${escapeHtml(item.category)}
+
+                <span
+                    class="px-2.5 py-1 rounded-full
+                           text-xs font-bold
+                           ${badgeColor}"
+                >
+                    ${escapeHtml(
+                        item.category
+                    )}
                 </span>
+
             </td>
 
-            <td class="p-3 font-medium">
-                ${escapeHtml(item.name)}
+
+            <td class="p-3 font-medium
+                       text-slate-800">
+
+                ${escapeHtml(
+                    item.name
+                )}
+
             </td>
+
 
             <td class="p-3 text-slate-600">
-                ${escapeHtml(item.price)}
-            </td>
 
-            <td class="p-3">
-                ${sizeSummary}
-            </td>
-
-            <td class="p-3 text-center admin-only">
-
-                <button
-                    class="btn-manage
-                           bg-slate-200
-                           text-slate-700
-                           text-xs px-3 py-1.5
-                           rounded-lg
-                           hover:bg-slate-300">
-                    재고 관리
-                </button>
+                ${escapeHtml(
+                    item.price
+                )}
 
             </td>
+
+
+            <td class="p-3 text-slate-600
+                       font-semibold">
+
+                ${totalQty}벌
+
+            </td>
+
 
             <td class="p-3 text-center">
 
                 <button
                     class="btn-detail
-                           bg-blue-900
-                           text-white
+                           bg-blue-900 text-white
                            text-xs px-3 py-1.5
                            rounded-lg
-                           hover:bg-blue-800">
+                           hover:bg-blue-800
+                           transition"
+                >
                     자세히 보기
                 </button>
 
             </td>
+
         `;
 
 
-        tr.querySelector(".btn-detail").onclick =
-        () => {
+        tr.querySelector(
+            '.btn-detail'
+        ).onclick = () => {
 
             openUniformModal(
-                item,
-                false
+                item
             );
-        };
 
-
-        tr.querySelector(".btn-manage").onclick =
-        () => {
-
-            if (!isAdmin) {
-
-                alert(
-                    "관리자 로그인이 필요합니다."
-                );
-
-                return;
-            }
-
-
-            openUniformModal(
-                item,
-                true
-            );
         };
 
 
         tbody.appendChild(tr);
+
     });
+
 }
 
 
-/* =========================================================
-   교복 상세 모달
-========================================================= */
+/* ============================================================
+   교복 상세보기
+============================================================ */
 
 const uniformModal =
     document.getElementById(
-        "uniformModal"
+        'uniformModal'
     );
 
 
-document.getElementById(
-    "uniformModalClose"
-).onclick = () => {
+let currentUniformId = null;
 
-    uniformModal.classList.add("hidden");
-    uniformModal.classList.remove("flex");
-};
+
+function openUniformModal(item) {
+
+    selectedUniform =
+        item;
+
+    currentUniformId =
+        item.id;
+
+
+    document
+        .getElementById(
+            'uniformModalCategory'
+        )
+        .textContent =
+            item.category;
+
+
+    document
+        .getElementById(
+            'uniformModalTitle'
+        )
+        .textContent =
+            item.name;
+
+
+    document
+        .getElementById(
+            'uniformModalPrice'
+        )
+        .textContent =
+            "가격: " +
+            item.price;
+
+
+    document
+        .getElementById(
+            'newSizeInput'
+        )
+        .value = '';
+
+
+    renderUniformSizes();
+
+
+    uniformModal.classList.remove(
+        'hidden'
+    );
+
+    uniformModal.classList.add(
+        'flex'
+    );
+
+}
+
+
+function closeUniformModal() {
+
+    uniformModal.classList.add(
+        'hidden'
+    );
+
+    uniformModal.classList.remove(
+        'flex'
+    );
+
+
+    selectedUniform = null;
+
+    currentUniformId = null;
+
+}
+
+
+document
+    .getElementById(
+        'uniformModalClose'
+    )
+    .onclick =
+        closeUniformModal;
+
+
+document
+    .getElementById(
+        'uniformModalBottomClose'
+    )
+    .onclick =
+        closeUniformModal;
 
 
 uniformModal.onclick = e => {
 
-    if (e.target === uniformModal) {
+    if (
+        e.target === uniformModal
+    ) {
 
-        uniformModal.classList.add("hidden");
-        uniformModal.classList.remove("flex");
+        closeUniformModal();
+
     }
+
 };
 
 
-function openUniformModal(
-    item,
-    adminMode = false
-) {
+/* ============================================================
+   사이즈 정렬
+============================================================ */
 
-    document.getElementById(
-        "uniformModalTitle"
-    ).textContent =
-        item.name;
+function sortSizes(sizes) {
 
+    return Object.entries(
+        sizes || {}
+    ).sort(
+        ([a], [b]) => {
 
-    document.getElementById(
-        "uniformModalPrice"
-    ).textContent =
-        `${item.category} · ${item.price}`;
+            const na =
+                Number(a);
 
-
-    const content =
-        document.getElementById(
-            "uniformModalContent"
-        );
+            const nb =
+                Number(b);
 
 
-    const sizes =
-        item.sizes || {};
+            if (
+                Number.isFinite(na) &&
+                Number.isFinite(nb)
+            ) {
+
+                return na - nb;
+
+            }
 
 
-    const sizeKeys =
-        getSortedSizes(sizes);
+            if (
+                Number.isFinite(na)
+            ) return -1;
 
 
-    if (adminMode && isAdmin) {
-
-        renderAdminUniformEditor(
-            content,
-            item,
-            sizeKeys
-        );
-
-    } else {
-
-        renderStudentUniformView(
-            content,
-            item,
-            sizeKeys
-        );
-    }
+            if (
+                Number.isFinite(nb)
+            ) return 1;
 
 
-    uniformModal.classList.remove("hidden");
-    uniformModal.classList.add("flex");
+            return a.localeCompare(
+                b
+            );
+
+        }
+    );
+
 }
 
 
-/* =========================================================
-   학생용 교복 상세
-========================================================= */
+/* ============================================================
+   사이즈 목록
+============================================================ */
 
-function renderStudentUniformView(
-    container,
-    item,
-    sizeKeys
-) {
+function renderUniformSizes() {
+
+    const list =
+        document.getElementById(
+            'uniformSizeList'
+        );
+
+
+    list.innerHTML = '';
+
+
+    if (!selectedUniform) return;
+
 
     const sizes =
-        item.sizes || {};
+        selectedUniform.sizes || {};
 
 
-    let sizeButtons = "";
+    const entries =
+        sortSizes(
+            sizes
+        );
 
 
-    sizeKeys.forEach(size => {
+    if (entries.length === 0) {
 
-        const qty =
-            Number(sizes[size]) || 0;
-
-        const soldOut =
-            qty <= 0;
-
-
-        sizeButtons += `
-
-            <button
-                type="button"
-                data-size="${escapeHtml(size)}"
-                ${soldOut ? "disabled" : ""}
-                class="uniform-size-button
-                       border rounded-xl p-3
-                       text-sm text-left
-                       ${soldOut
-                           ? "bg-slate-100 text-slate-400 cursor-not-allowed"
-                           : "bg-white hover:border-blue-500"}">
-
-                <div class="font-bold">
-                    ${escapeHtml(size)}
-                </div>
-
-                <div class="text-xs mt-1
-                            ${soldOut
-                                ? "text-red-400"
-                                : "text-emerald-600"}">
-
-                    ${soldOut
-                        ? "품절"
-                        : `재고 ${qty}개`}
-
-                </div>
-
-            </button>
-        `;
-    });
-
-
-    if (!sizeButtons) {
-
-        sizeButtons =
-            `<p class="text-sm text-slate-400">
+        list.innerHTML =
+            `<p class="text-sm
+                      text-slate-400
+                      text-center py-5">
                 등록된 사이즈가 없습니다.
              </p>`;
+
+        return;
+
     }
 
 
-    container.innerHTML = `
+    entries.forEach(
+        ([size, qty]) => {
 
-        <div class="mb-4">
-
-            <p class="text-sm font-bold
-                      text-slate-700 mb-2">
-                사이즈를 선택하세요.
-            </p>
-
-            <div
-                id="uniformSizeButtons"
-                class="grid grid-cols-2
-                       sm:grid-cols-3 gap-2">
-                ${sizeButtons}
-            </div>
-
-        </div>
-
-        <div
-            id="selectedUniformInfo"
-            class="hidden bg-blue-50
-                   border border-blue-100
-                   rounded-xl p-4 mb-4">
-        </div>
-
-        <form
-            id="uniformApplyForm"
-            class="space-y-3">
-
-            <input
-                type="text"
-                id="uniformStudentId"
-                maxlength="20"
-                required
-                placeholder="학번"
-                class="w-full px-3 py-2.5
-                       border rounded-lg text-sm">
-
-            <input
-                type="text"
-                id="uniformStudentName"
-                maxlength="30"
-                required
-                placeholder="이름"
-                class="w-full px-3 py-2.5
-                       border rounded-lg text-sm">
-
-            <button
-                type="submit"
-                id="uniformApplyButton"
-                disabled
-                class="w-full py-2.5
-                       bg-blue-900 text-white
-                       rounded-lg text-sm
-                       font-bold
-                       hover:bg-blue-800
-                       disabled:opacity-50
-                       disabled:cursor-not-allowed">
-
-                사이즈를 먼저 선택해주세요
-
-            </button>
-
-        </form>
-    `;
-
-
-    let selectedSize = null;
-
-
-    document.querySelectorAll(
-        ".uniform-size-button"
-    ).forEach(button => {
-
-        button.onclick = () => {
-
-            document.querySelectorAll(
-                ".uniform-size-button"
-            ).forEach(b => {
-
-                b.classList.remove(
-                    "border-blue-600",
-                    "bg-blue-50",
-                    "ring-2",
-                    "ring-blue-200"
-                );
-            });
-
-
-            button.classList.add(
-                "border-blue-600",
-                "bg-blue-50",
-                "ring-2",
-                "ring-blue-200"
-            );
-
-
-            selectedSize =
-                button.dataset.size;
-
-
-            const qty =
-                Number(
-                    sizes[selectedSize]
-                ) || 0;
-
-
-            const info =
-                document.getElementById(
-                    "selectedUniformInfo"
+            const row =
+                document.createElement(
+                    'div'
                 );
 
 
-            info.classList.remove("hidden");
+            row.className =
+                "flex flex-col sm:flex-row " +
+                "items-start sm:items-center " +
+                "justify-between gap-2 " +
+                "p-3 bg-slate-50 " +
+                "border border-slate-200 " +
+                "rounded-xl";
 
 
-            info.innerHTML = `
+            const numericQty =
+                Math.max(
+                    0,
+                    Number(qty) || 0
+                );
 
-                <p class="font-bold text-blue-900">
-                    선택한 사이즈:
-                    ${escapeHtml(selectedSize)}
-                </p>
 
-                <p class="text-sm text-slate-600 mt-1">
-                    현재 재고:
-                    <b>${qty}개</b>
-                </p>
+            row.innerHTML = `
+
+                <div>
+
+                    <span class="font-bold
+                                 text-blue-900">
+                        ${escapeHtml(size)}
+                    </span>
+
+                    <span
+                        class="text-xs
+                               text-slate-500
+                               ml-2"
+                    >
+                        사이즈
+                    </span>
+
+                </div>
+
+
+                <div class="flex items-center
+                            gap-2">
+
+                    <span
+                        class="stock-label
+                               text-sm font-bold
+                               ${numericQty > 0
+                                   ? 'text-emerald-600'
+                                   : 'text-red-500'}"
+                    >
+                        재고 ${numericQty}개
+                    </span>
+
+
+                    <button
+                        class="apply-size
+                               bg-blue-900
+                               text-white
+                               text-xs
+                               px-3 py-1.5
+                               rounded-lg
+                               hover:bg-blue-800
+                               ${numericQty <= 0
+                                   ? 'opacity-50 cursor-not-allowed'
+                                   : ''}"
+                        ${numericQty <= 0
+                            ? 'disabled'
+                            : ''}
+                    >
+                        ${numericQty > 0
+                            ? '이 사이즈 신청'
+                            : '품절'}
+                    </button>
+
+
+                    <button
+                        class="edit-size
+                               admin-only
+                               bg-slate-200
+                               text-slate-700
+                               text-xs
+                               px-3 py-1.5
+                               rounded-lg
+                               hover:bg-slate-300"
+                    >
+                        재고 수정
+                    </button>
+
+                </div>
+
             `;
 
 
-            const applyButton =
-                document.getElementById(
-                    "uniformApplyButton"
+            row.querySelector(
+                '.apply-size'
+            ).onclick = () => {
+
+                applyUniform(
+                    selectedUniform.id,
+                    size
                 );
 
-
-            applyButton.disabled = false;
-
-            applyButton.textContent =
-                `${selectedSize} 사이즈 신청하기`;
-        };
-    });
+            };
 
 
-    document.getElementById(
-        "uniformApplyForm"
-    ).onsubmit = async e => {
+            row.querySelector(
+                '.edit-size'
+            ).onclick = async () => {
 
-        e.preventDefault();
+                if (!isAdmin) {
 
+                    alert(
+                        "관리자 로그인이 필요합니다."
+                    );
 
-        if (!selectedSize) {
+                    return;
 
-            alert(
-                "사이즈를 선택해주세요."
-            );
-
-            return;
-        }
+                }
 
 
-        const studentId =
-            document.getElementById(
-                "uniformStudentId"
-            ).value.trim();
+                const current =
+                    Number(qty) || 0;
 
 
-        const studentName =
-            document.getElementById(
-                "uniformStudentName"
-            ).value.trim();
+                const input =
+                    prompt(
+                        `${size} 사이즈의 새 재고 수량을 입력하세요.`,
+                        current
+                    );
 
 
-        if (!studentId || !studentName) {
-            return;
-        }
+                if (
+                    input === null
+                ) return;
 
 
-        const button =
-            document.getElementById(
-                "uniformApplyButton"
-            );
+                if (
+                    !/^\d+$/.test(
+                        input.trim()
+                    )
+                ) {
+
+                    alert(
+                        "0 이상의 정수만 입력해주세요."
+                    );
+
+                    return;
+
+                }
 
 
-        button.disabled = true;
-        button.textContent = "신청 처리 중...";
+                const newQty =
+                    Number(
+                        input.trim()
+                    );
 
 
-        try {
+                if (
+                    !Number.isSafeInteger(
+                        newQty
+                    )
+                ) {
 
-            /*
-             * Transaction을 이용하여
-             * 재고 감소 + 신청자 등록을
-             * 하나의 작업으로 처리한다.
-             */
+                    alert(
+                        "올바른 재고 수량을 입력해주세요."
+                    );
 
-            await runTransaction(
-                db,
-                async transaction => {
+                    return;
+
+                }
+
+
+                try {
 
                     const uniformRef =
                         doc(
                             db,
                             "uniforms",
-                            item.id
+                            selectedUniform.id
                         );
 
 
-                    const uniformSnap =
-                        await transaction.get(
-                            uniformRef
-                        );
+                    const updatedSizes = {
+                        ...(
+                            selectedUniform
+                                .sizes || {}
+                        ),
+                        [size]:
+                            newQty
+                    };
 
 
-                    if (!uniformSnap.exists()) {
-
-                        throw new Error(
-                            "해당 교복 항목을 찾을 수 없습니다."
-                        );
-                    }
-
-
-                    const current =
-                        uniformSnap.data();
-
-
-                    const currentSizes =
-                        current.sizes || {};
-
-
-                    const currentQty =
-                        Number(
-                            currentSizes[
-                                selectedSize
-                            ]
-                        ) || 0;
-
-
-                    if (currentQty <= 0) {
-
-                        throw new Error(
-                            "선택한 사이즈의 재고가 없습니다."
-                        );
-                    }
-
-
-                    const newSizes =
-                        {
-                            ...currentSizes,
-                            [selectedSize]:
-                                currentQty - 1
-                        };
-
-
-                    transaction.update(
+                    await updateDoc(
                         uniformRef,
                         {
-                            sizes: newSizes
+                            sizes:
+                                updatedSizes
                         }
                     );
 
 
-                    const applicantRef =
-                        doc(
-                            collection(
-                                db,
-                                "uniformApplicants"
-                            )
-                        );
+                    selectedUniform.sizes =
+                        updatedSizes;
 
 
-                    transaction.set(
-                        applicantRef,
-                        {
-                            item:
-                                `[${current.category}] ${current.name}`,
+                    renderUniformSizes();
 
-                            size:
-                                selectedSize,
 
-                            studentId:
-                                studentId,
+                } catch (err) {
 
-                            name:
-                                studentName,
-
-                            date:
-                                new Date()
-                                    .toLocaleDateString(
-                                        "ko-KR"
-                                    ),
-
-                            createdAt:
-                                Date.now()
-                        }
+                    reportError(
+                        "재고 수정 실패",
+                        err
                     );
+
                 }
+
+            };
+
+
+            list.appendChild(
+                row
             );
 
-
-            alert(
-                `${studentName}님,\n` +
-                `${item.name} ${selectedSize} 사이즈 신청이 완료되었습니다!`
-            );
-
-
-            uniformModal.classList.add("hidden");
-            uniformModal.classList.remove("flex");
-
-
-        } catch (err) {
-
-            reportError(
-                "교복 신청 실패",
-                err
-            );
-
-        } finally {
-
-            button.disabled = false;
-
-            button.textContent =
-                `${selectedSize} 사이즈 신청하기`;
         }
-    };
+    );
+
 }
 
 
-/* =========================================================
-   관리자용 교복 관리
-========================================================= */
-
-function renderAdminUniformEditor(
-    container,
-    item,
-    sizeKeys
-) {
-
-    const sizes =
-        item.sizes || {};
-
-
-    let rows = "";
-
-
-    sizeKeys.forEach(size => {
-
-        const qty =
-            Number(sizes[size]) || 0;
-
-
-        rows += `
-
-            <div
-                class="uniform-admin-row
-                       flex flex-col sm:flex-row
-                       gap-2 items-center
-                       border border-slate-200
-                       rounded-xl p-3">
-
-                <div class="flex-grow w-full">
-
-                    <p class="font-bold text-sm">
-                        사이즈
-                        ${escapeHtml(size)}
-                    </p>
-
-                    <p class="text-xs
-                              text-slate-400">
-                        현재 재고 ${qty}개
-                    </p>
-
-                </div>
-
-                <input
-                    type="number"
-                    min="0"
-                    step="1"
-                    value="${qty}"
-                    data-size="${escapeHtml(size)}"
-                    class="admin-size-qty
-                           w-full sm:w-28
-                           px-3 py-2
-                           border rounded-lg
-                           text-sm">
-
-                <button
-                    type="button"
-                    data-size="${escapeHtml(size)}"
-                    class="delete-size
-                           bg-red-50
-                           text-red-600
-                           px-3 py-2
-                           rounded-lg
-                           text-xs font-bold">
-                    삭제
-                </button>
-
-            </div>
-        `;
-    });
-
-
-    if (!rows) {
-
-        rows =
-            `<p class="text-sm text-slate-400">
-                아직 등록된 사이즈가 없습니다.
-             </p>`;
-    }
-
-
-    container.innerHTML = `
-
-        <div class="space-y-4">
-
-            <div class="bg-blue-50
-                        border border-blue-100
-                        rounded-xl p-4">
-
-                <p class="font-bold text-blue-900">
-                    관리자 재고 관리
-                </p>
-
-                <p class="text-xs text-slate-600 mt-1">
-                    사이즈를 숫자로 직접 입력하면
-                    새로운 사이즈가 추가됩니다.
-                </p>
-
-            </div>
-
-
-            <div class="space-y-2"
-                 id="uniformAdminRows">
-
-                ${rows}
-
-            </div>
-
-
-            <div class="border-t pt-4">
-
-                <h4 class="font-bold text-sm mb-2">
-                    새 사이즈 추가
-                </h4>
-
-                <div class="flex gap-2">
-
-                    <input
-                        type="number"
-                        min="0"
-                        step="1"
-                        id="newUniformSize"
-                        placeholder="예: 105"
-                        class="flex-grow px-3 py-2
-                               border rounded-lg
-                               text-sm">
-
-                    <input
-                        type="number"
-                        min="0"
-                        step="1"
-                        id="newUniformQty"
-                        placeholder="재고"
-                        value="0"
-                        class="w-24 px-3 py-2
-                               border rounded-lg
-                               text-sm">
-
-                    <button
-                        type="button"
-                        id="addUniformSizeBtn"
-                        class="bg-blue-900
-                               text-white px-4 py-2
-                               rounded-lg text-xs
-                               font-bold">
-                        추가
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div class="border-t pt-4
-                        flex gap-2">
-
-                <button
-                    type="button"
-                    id="saveUniformStockBtn"
-                    class="flex-1
-                           bg-emerald-600
-                           text-white
-                           py-2.5 rounded-lg
-                           text-sm font-bold">
-                    재고 저장
-                </button>
-
-                <button
-                    type="button"
-                    id="deleteUniformBtn"
-                    class="bg-red-600
-                           text-white
-                           px-4 py-2.5
-                           rounded-lg
-                           text-sm font-bold">
-                    항목 삭제
-                </button>
-
-            </div>
-
-        </div>
-    `;
-
-
-    document.querySelectorAll(
-        ".delete-size"
-    ).forEach(button => {
-
-        button.onclick = async () => {
-
-            if (!isAdmin) {
-                return;
-            }
-
-
-            const size =
-                button.dataset.size;
-
-
-            if (
-                !confirm(
-                    `${size} 사이즈를 삭제하시겠습니까?`
-                )
-            ) {
-                return;
-            }
-
-
-            const latestSizes =
-                {
-                    ...item.sizes
-                };
-
-
-            delete latestSizes[size];
-
-
-            try {
-
-                await updateDoc(
-                    doc(
-                        db,
-                        "uniforms",
-                        item.id
-                    ),
-                    {
-                        sizes: latestSizes
-                    }
-                );
-
-
-                openUniformModal(
-                    {
-                        ...item,
-                        sizes: latestSizes
-                    },
-                    true
-                );
-
-            } catch (err) {
-
-                reportError(
-                    "사이즈 삭제 실패",
-                    err
-                );
-            }
-        };
-    });
-
-
-    document.getElementById(
-        "addUniformSizeBtn"
-    ).onclick = async () => {
-
-        const sizeInput =
-            document.getElementById(
-                "newUniformSize"
-            );
-
-
-        const qtyInput =
-            document.getElementById(
-                "newUniformQty"
-            );
-
-
-        const rawSize =
-            sizeInput.value.trim();
-
-
-        const rawQty =
-            qtyInput.value.trim();
-
-
-        if (!rawSize) {
+/* ============================================================
+   사이즈 추가
+============================================================ */
+
+document
+    .getElementById(
+        'addSizeBtn'
+    )
+    .onclick = async () => {
+
+        if (!isAdmin) {
 
             alert(
-                "추가할 사이즈 숫자를 입력해주세요."
+                "관리자 로그인이 필요합니다."
             );
 
             return;
+
         }
 
 
+        if (!selectedUniform) {
+
+            return;
+
+        }
+
+
+        const input =
+            document
+                .getElementById(
+                    'newSizeInput'
+                )
+                .value
+                .trim();
+
+
         /*
-         * 숫자로 직접 입력.
-         * 85, 90, 95, 100 같은 형태.
+         * 사용자가 숫자를 직접 작성해야 한다.
          */
-        if (!/^\d+$/.test(rawSize)) {
+        if (
+            !/^\d+$/.test(input)
+        ) {
 
             alert(
-                "사이즈는 숫자만 입력해주세요.\n예: 85, 90, 95, 100"
+                "사이즈는 숫자로 입력해주세요.\n예: 85, 90, 95"
             );
 
             return;
+
         }
 
 
         const size =
             String(
-                parseInt(
-                    rawSize,
-                    10
-                )
-            );
-
-
-        const qty =
-            parseInt(
-                rawQty || "0",
-                10
+                Number(input)
             );
 
 
         if (
-            !Number.isInteger(qty) ||
-            qty < 0
+            Number(size) < 1 ||
+            Number(size) > 999
         ) {
 
             alert(
-                "재고는 0 이상의 정수로 입력해주세요."
+                "사이즈는 1~999 사이의 숫자로 입력해주세요."
             );
 
             return;
+
         }
 
 
         const currentSizes =
             {
-                ...(item.sizes || {})
+                ...(
+                    selectedUniform
+                        .sizes || {}
+                )
             };
 
 
@@ -3972,37 +4187,50 @@ function renderAdminUniformEditor(
         ) {
 
             alert(
-                "이미 존재하는 사이즈입니다."
+                `${size} 사이즈가 이미 존재합니다.`
             );
 
             return;
+
         }
-
-
-        currentSizes[size] = qty;
 
 
         try {
 
-            await updateDoc(
+            const uniformRef =
                 doc(
                     db,
                     "uniforms",
-                    item.id
-                ),
+                    selectedUniform.id
+                );
+
+
+            currentSizes[size] =
+                0;
+
+
+            await updateDoc(
+                uniformRef,
                 {
-                    sizes: currentSizes
+                    sizes:
+                        currentSizes
                 }
             );
 
 
-            openUniformModal(
-                {
-                    ...item,
-                    sizes: currentSizes
-                },
-                true
-            );
+            selectedUniform.sizes =
+                currentSizes;
+
+
+            document
+                .getElementById(
+                    'newSizeInput'
+                )
+                .value = '';
+
+
+            renderUniformSizes();
+
 
         } catch (err) {
 
@@ -4010,125 +4238,214 @@ function renderAdminUniformEditor(
                 "사이즈 추가 실패",
                 err
             );
+
         }
+
     };
 
 
-    document.getElementById(
-        "saveUniformStockBtn"
-    ).onclick = async () => {
+/* ============================================================
+   교복 신청
+============================================================ */
 
-        const newSizes = {};
+async function applyUniform(
+    uniformId,
+    size
+) {
 
-
-        document.querySelectorAll(
-            ".admin-size-qty"
-        ).forEach(input => {
-
-            const size =
-                input.dataset.size;
-
-
-            const qty =
-                parseInt(
-                    input.value,
-                    10
-                );
+    const item =
+        uniformData.find(
+            x =>
+                x.id ===
+                uniformId
+        );
 
 
-            if (
-                !Number.isInteger(qty) ||
-                qty < 0
-            ) {
+    if (!item) {
 
-                throw new Error(
-                    `${size} 사이즈의 재고가 올바르지 않습니다.`
-                );
-            }
+        alert(
+            "교복 정보를 찾을 수 없습니다."
+        );
 
+        return;
 
-            newSizes[size] = qty;
-        });
+    }
 
 
-        try {
+    const currentQty =
+        Number(
+            (
+                item.sizes || {}
+            )[size]
+        ) || 0;
 
-            await updateDoc(
-                doc(
-                    db,
-                    "uniforms",
-                    item.id
-                ),
-                {
-                    sizes: newSizes
+
+    if (
+        currentQty <= 0
+    ) {
+
+        alert(
+            "해당 사이즈의 재고가 없습니다."
+        );
+
+        return;
+
+    }
+
+
+    const studentId =
+        prompt(
+            "학번을 입력하세요 (예: 10101):"
+        );
+
+
+    if (
+        !studentId ||
+        !studentId.trim()
+    ) return;
+
+
+    const studentName =
+        prompt(
+            "이름을 입력하세요:"
+        );
+
+
+    if (
+        !studentName ||
+        !studentName.trim()
+    ) return;
+
+
+    try {
+
+        /*
+         * Transaction을 사용한다.
+         *
+         * 여러 명이 동시에 신청해도
+         * 재고가 음수가 되지 않도록 한다.
+         */
+
+        const uniformRef =
+            doc(
+                db,
+                "uniforms",
+                uniformId
+            );
+
+
+        await runTransaction(
+            db,
+            async transaction => {
+
+                const snap =
+                    await transaction.get(
+                        uniformRef
+                    );
+
+
+                if (!snap.exists()) {
+
+                    throw new Error(
+                        "교복 항목을 찾을 수 없습니다."
+                    );
+
                 }
-            );
 
 
-            alert(
-                "사이즈별 재고가 저장되었습니다."
-            );
+                const data =
+                    snap.data();
 
 
-            openUniformModal(
-                {
-                    ...item,
-                    sizes: newSizes
-                },
-                true
-            );
-
-        } catch (err) {
-
-            reportError(
-                "재고 저장 실패",
-                err
-            );
-        }
-    };
+                const sizes =
+                    {
+                        ...(data.sizes || {})
+                    };
 
 
-    document.getElementById(
-        "deleteUniformBtn"
-    ).onclick = async () => {
-
-        if (
-            !confirm(
-                `'${item.name}' 항목을 삭제하시겠습니까?`
-            )
-        ) {
-            return;
-        }
+                const stock =
+                    Number(
+                        sizes[size]
+                    ) || 0;
 
 
-        try {
+                if (
+                    stock <= 0
+                ) {
 
-            await deleteDoc(
-                doc(
-                    db,
-                    "uniforms",
-                    item.id
-                )
-            );
+                    throw new Error(
+                        "해당 사이즈의 재고가 없습니다."
+                    );
+
+                }
 
 
-            uniformModal.classList.add("hidden");
-            uniformModal.classList.remove("flex");
+                sizes[size] =
+                    stock - 1;
 
-        } catch (err) {
 
-            reportError(
-                "교복 항목 삭제 실패",
-                err
-            );
-        }
-    };
+                transaction.update(
+                    uniformRef,
+                    {
+                        sizes
+                    }
+                );
+
+            }
+        );
+
+
+        await addDoc(
+            collection(
+                db,
+                "uniformApplicants"
+            ),
+            {
+                item:
+                    `[${item.category}] ${item.name}`,
+
+                size:
+                    String(size),
+
+                studentId:
+                    studentId.trim(),
+
+                name:
+                    studentName.trim(),
+
+                date:
+                    new Date()
+                        .toLocaleDateString(),
+
+                createdAt:
+                    Date.now()
+            }
+        );
+
+
+        alert(
+            `${studentName.trim()}님,\n` +
+            `${item.name} ${size}사이즈 신청이 완료되었습니다!`
+        );
+
+
+    } catch (err) {
+
+        reportError(
+            "교복 신청 실패",
+            err
+        );
+
+    }
+
 }
 
 
-/* =========================================================
-   관리자 신청자 명단
-========================================================= */
+/* ============================================================
+   신청자 명단
+============================================================ */
+
+let applicantData = [];
 
 let unsubscribeApplicants = null;
 
@@ -4150,26 +4467,26 @@ function syncApplicantSubscription() {
 
                     applicantData = [];
 
+
                     snapshot.forEach(
                         docSnap => {
 
                             applicantData.push({
-                                id: docSnap.id,
+                                id:
+                                    docSnap.id,
+
                                 ...docSnap.data()
                             });
+
                         }
                     );
 
-
-                    renderApplicants();
                 },
-                err => {
-
+                err =>
                     console.error(
                         "신청자 명단 구독 실패:",
                         err
-                    );
-                }
+                    )
             );
 
     } else if (
@@ -4179,223 +4496,151 @@ function syncApplicantSubscription() {
 
         unsubscribeApplicants();
 
-        unsubscribeApplicants = null;
+        unsubscribeApplicants =
+            null;
 
         applicantData = [];
 
-        renderApplicants();
     }
+
 }
 
 
-/* =========================================================
-   신청자 모달
-========================================================= */
+document
+    .getElementById(
+        'btnViewApplicants'
+    )
+    .onclick = function() {
 
-const applicantModal =
-    document.getElementById(
-        "applicantModal"
-    );
+        if (!isAdmin) {
 
+            alert(
+                "관리자 로그인이 필요합니다."
+            );
 
-document.getElementById(
-    "applicantModalClose"
-).onclick = () => {
+            return;
 
-    applicantModal.classList.add("hidden");
-    applicantModal.classList.remove("flex");
-};
-
-
-applicantModal.onclick = e => {
-
-    if (e.target === applicantModal) {
-
-        applicantModal.classList.add("hidden");
-        applicantModal.classList.remove("flex");
-    }
-};
-
-
-document.getElementById(
-    "btnViewApplicants"
-).onclick = () => {
-
-    if (!isAdmin) {
-
-        alert(
-            "관리자 로그인이 필요합니다."
-        );
-
-        return;
-    }
-
-
-    renderApplicants();
-
-
-    applicantModal.classList.remove("hidden");
-    applicantModal.classList.add("flex");
-};
-
-
-function renderApplicants() {
-
-    const container =
-        document.getElementById(
-            "applicantList"
-        );
-
-
-    if (!isAdmin) {
-
-        container.innerHTML =
-            `<p class="text-sm text-slate-400">
-                관리자만 확인할 수 있습니다.
-             </p>`;
-
-        return;
-    }
-
-
-    if (applicantData.length === 0) {
-
-        container.innerHTML =
-            `<p class="text-sm text-slate-400
-                       text-center py-8">
-                현재 교복 신청 내역이 없습니다.
-             </p>`;
-
-        return;
-    }
-
-
-    const sorted =
-        [...applicantData].sort(
-            (a, b) =>
-                (a.createdAt || 0) -
-                (b.createdAt || 0)
-        );
-
-
-    container.innerHTML = "";
-
-
-    const table =
-        document.createElement("div");
-
-    table.className =
-        "space-y-2";
-
-
-    sorted.forEach(
-        (entry, index) => {
-
-            const row =
-                document.createElement("div");
-
-            row.className =
-                "border border-slate-200 " +
-                "rounded-xl p-3 " +
-                "flex flex-col md:flex-row " +
-                "md:items-center gap-3";
-
-
-            row.innerHTML = `
-
-                <div class="flex-grow">
-
-                    <p class="font-bold text-sm">
-                        ${index + 1}.
-                        ${escapeHtml(entry.item)}
-                    </p>
-
-                    <p class="text-xs text-slate-600 mt-1">
-                        사이즈:
-                        <b>${escapeHtml(entry.size || "-")}</b>
-                        · 학번:
-                        ${escapeHtml(entry.studentId)}
-                        · 이름:
-                        ${escapeHtml(entry.name)}
-                    </p>
-
-                    <p class="text-[10px]
-                              text-slate-400 mt-1">
-                        ${escapeHtml(entry.date || "")}
-                    </p>
-
-                </div>
-
-                <button
-                    class="delete-applicant
-                           bg-red-50 text-red-600
-                           px-3 py-2 rounded-lg
-                           text-xs font-bold">
-                    삭제
-                </button>
-            `;
-
-
-            row.querySelector(
-                ".delete-applicant"
-            ).onclick = async () => {
-
-                if (!isAdmin) {
-                    return;
-                }
-
-
-                if (
-                    !confirm(
-                        "이 신청 내역을 삭제하시겠습니까?"
-                    )
-                ) {
-                    return;
-                }
-
-
-                try {
-
-                    await deleteDoc(
-                        doc(
-                            db,
-                            "uniformApplicants",
-                            entry.id
-                        )
-                    );
-
-                } catch (err) {
-
-                    reportError(
-                        "신청 내역 삭제 실패",
-                        err
-                    );
-                }
-            };
-
-
-            table.appendChild(row);
         }
-    );
 
 
-    container.appendChild(table);
-}
+        if (
+            applicantData.length === 0
+        ) {
+
+            alert(
+                "현재 교복 신청 내역이 없습니다."
+            );
+
+            return;
+
+        }
 
 
-/* =========================================================
-   인증 상태 감시
-========================================================= */
+        const sorted =
+            [...applicantData].sort(
+                (a, b) =>
+                    (a.createdAt || 0) -
+                    (b.createdAt || 0)
+            );
+
+
+        let msg =
+            "--- [교복 신청자 명단] ---\n\n";
+
+
+        sorted.forEach(
+            (entry, i) => {
+
+                msg +=
+                    `${i + 1}. ` +
+                    `품목: ${entry.item} | ` +
+                    `사이즈: ${entry.size} | ` +
+                    `학번: ${entry.studentId} | ` +
+                    `이름: ${entry.name} ` +
+                    `(${entry.date})\n`;
+
+            }
+        );
+
+
+        msg +=
+            "\n💡 구입 완료된 신청 내역을 삭제하려면 번호를 입력하세요.\n" +
+            "취소하려면 빈칸 또는 취소를 누르세요.";
+
+
+        const target =
+            prompt(msg);
+
+
+        if (
+            target === null ||
+            target.trim() === ""
+        ) return;
+
+
+        const idx =
+            parseInt(
+                target,
+                10
+            ) - 1;
+
+
+        if (
+            isNaN(idx) ||
+            idx < 0 ||
+            idx >= sorted.length
+        ) {
+
+            alert(
+                "올바른 번호를 입력해주세요."
+            );
+
+            return;
+
+        }
+
+
+        deleteDoc(
+            doc(
+                db,
+                "uniformApplicants",
+                sorted[idx].id
+            )
+        )
+        .then(
+            () =>
+                alert(
+                    "신청 내역이 삭제되었습니다."
+                )
+        )
+        .catch(
+            err =>
+                reportError(
+                    "신청 내역 삭제 실패",
+                    err
+                )
+        );
+
+    };
+
+
+/* ============================================================
+   로그인 상태
+============================================================ */
 
 onAuthStateChanged(
     auth,
     user => {
 
-        isAdmin = !!user;
+        isAdmin =
+            !!user;
+
 
         updateAdminUI();
 
+
         syncApplicantSubscription();
+
 
         renderQnA();
 
@@ -4405,13 +4650,23 @@ onAuthStateChanged(
 
         renderUniform();
 
-        renderApplicants();
+
+        /*
+         * 관리자 로그인 직후
+         * 삭제된 기본 교복을 확인하고 복구한다.
+         */
+        if (isAdmin) {
+
+            restoreMissingDefaultUniforms();
+
+        }
+
     }
 );
 
 
-/* 초기 UI */
 updateAdminUI();
+
 
 </script>
 
